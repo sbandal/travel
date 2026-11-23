@@ -63,58 +63,45 @@ const TRIP_DATA = {
       theme: 'Diamond Head, Kapahulu Eats & Waikiki Beach',
       color: '#0d6e6e',
       carInSplitMode: false,
-      summary: 'Zero-car Waikiki day: sunrise crater hike, iconic local food crawl on Kapahulu Ave, beach time, and sunset sail.',
+      summary: 'Relaxed 9:30 AM start with zero car needed: crater hike, Kapahulu Ave food crawl, Waikiki Beach swim, and evening Kalakaua Ave dining.',
       holidayNote: 'Everything today is walkable or a 5-min Uber from Hotel Renew — no rental car or parking fees needed.',
       stops: [
         {
           id: 'd2-diamond',
           name: 'Diamond Head Crater Hike',
-          time: '7:00 AM',
+          time: '9:30 AM',
           category: 'hike',
           lat: 21.2619,
           lng: -157.8056,
           duration: '1.5–2 hrs',
           driveFromPrev: '8 min Uber / 30 min walk',
           description: 'Iconic 1.6-mile round-trip summit hike inside a volcanic tuff cone with panoramic 360° views of Waikiki and the south shore.',
-          reservationRequired: 'Book online ($5 entry)',
-          tip: 'Go for the 7:00 AM slot to beat the midday sun and crowds. Bring water and sneakers.'
+          reservationRequired: 'Book online ($5 entry · 9–10 AM slot)',
+          tip: 'Bring plenty of water, sunscreen, and a hat since the trail gets sunny by late morning.'
         },
         {
           id: 'd2-kapahulu',
           name: 'Kapahulu Ave Food Crawl',
-          time: '10:00 AM',
+          time: '12:00 PM',
           category: 'food',
           lat: 21.2816,
           lng: -157.8141,
           duration: '1.5 hrs',
           driveFromPrev: '6 min Uber / 18 min walk',
-          description: 'Post-hike reward along Honolulu’s best local food street: hot malasadas at Leonard’s Bakery, fresh ahi poke at Ono Seafood, or plate lunch at Rainbow Drive-In.',
-          tip: 'Ono Seafood closes at 6 PM (or when sold out) — midday is ideal for fresh spicy ahi & shoyu poke.'
+          description: 'Post-hike lunch along Honolulu’s best local food street: hot malasadas at Leonard’s Bakery, fresh ahi poke at Ono Seafood, or plate lunch at Rainbow Drive-In.',
+          tip: 'Midday is ideal for Ono Seafood before they sell out of spicy ahi & shoyu poke.'
         },
         {
           id: 'd2-waikiki',
-          name: 'Waikiki Beach & Optional Surf Lesson',
-          time: '12:30 PM',
+          name: 'Waikiki Beach Swim, Sunset & Night Stroll',
+          time: '2:00 PM – 10:30 PM',
           category: 'beach',
           lat: 21.2752,
           lng: -157.8261,
-          duration: '3 hrs',
+          duration: 'Afternoon & Evening',
           driveFromPrev: '1 block from Hotel Renew',
-          description: 'Relax on Waikiki Beach right outside Hotel Renew. Gentle, rolling reef breaks make this one of the best beginner surfing spots in the world.',
-          tip: 'Hotel Renew typically lends beach chairs/towels — ask the front desk before heading out.'
-        },
-        {
-          id: 'd2-catamaran',
-          name: 'Waikiki Sunset Catamaran Sail',
-          time: '5:00 PM',
-          category: 'adventure',
-          lat: 21.2768,
-          lng: -157.8294,
-          duration: '1.5 hrs',
-          driveFromPrev: '8 min beach walk',
-          description: 'Sail directly off Waikiki Beach (Maitaʻi or Kepoikai) for golden-hour views of Diamond Head and the Honolulu skyline from the water.',
-          reservationRequired: 'Book 1–2 days ahead',
-          tip: 'Followed by dinner at Marugame Udon, Steak Shack, or Duke’s Waikiki.'
+          description: 'Unwind and swim at Waikiki Beach right outside Hotel Renew, catch the ~5:50 PM sunset, then enjoy dinner (Marugame Udon, Steak Shack, or Duke’s) and late-evening strolling along Kalakaua Ave & International Market Place.',
+          tip: 'Hotel Renew typically lends beach chairs and towels — ask the front desk before heading out.'
         }
       ]
     },
@@ -125,26 +112,26 @@ const TRIP_DATA = {
       theme: 'East Shore Snorkeling, Coastal Drive & Lanikai',
       color: '#c85a32',
       carInSplitMode: true,
-      summary: 'Pick up the rental car and explore Oʻahu’s dramatic southeast coast, world-class snorkeling, and turquoise Kailua beaches.',
-      holidayNote: 'Thanksgiving Day: Pearl Harbor and Polynesian Cultural Center are CLOSED today, making this the ideal outdoor & scenic driving day. Reserve Thanksgiving dinner early!',
+      summary: '9:30 AM car pickup and scenic southeast coast loop: Hanauma Bay snorkeling, cliffside lighthouse hike, Lanikai Beach, and Thanksgiving dinner.',
+      holidayNote: 'Thanksgiving Day: Polynesian Cultural Center and Pearl Harbor are CLOSED today, making this the ideal outdoor & scenic driving day. Reserve Thanksgiving dinner early!',
       stops: [
         {
           id: 'd3-hanauma',
           name: 'Hanauma Bay Nature Preserve',
-          time: '8:00 AM',
+          time: '10:00 AM',
           category: 'beach',
           lat: 21.2690,
           lng: -157.6938,
           duration: '2.5–3 hrs',
-          driveFromPrev: '25 min drive from Waikiki',
+          driveFromPrev: '25 min drive from Waikiki (9:30 AM depart)',
           description: 'Protected marine sanctuary inside a flooded volcanic crater teeming with tropical reef fish and sea turtles. Snorkel gear can be rented on-site.',
-          reservationRequired: 'Book Tue 11/24 at 7:00 AM HST ($25)',
-          tip: 'Bring $3 cash for parking and reef-safe sunscreen. If reservations sell out, stop at the lookout and head straight to Lanikai!'
+          reservationRequired: 'Book Tue 11/24 at 7:00 AM HST ($25 · 10 AM slot)',
+          tip: 'Last entry is 1:30 PM. Bring $3 cash for parking and reef-safe sunscreen. If reservations sell out, stop at the lookout and spend extra time at Lanikai!'
         },
         {
           id: 'd3-blowhole',
           name: 'Halona Blowhole & Makapuʻu Lighthouse Trail',
-          time: '11:30 AM',
+          time: '1:15 PM',
           category: 'hike',
           lat: 21.3106,
           lng: -157.6499,
@@ -156,25 +143,25 @@ const TRIP_DATA = {
         {
           id: 'd3-lanikai',
           name: 'Lanikai Beach & Pillbox Hike (Kailua)',
-          time: '2:00 PM',
+          time: '3:15 PM',
           category: 'beach',
           lat: 21.3924,
           lng: -157.7152,
           duration: '2.5 hrs',
           driveFromPrev: '25 min drive north',
-          description: 'Powdery white sand and calm turquoise water overlooking the Mokulua Islands. Optional 1-hour Lanikai Pillbox hike for one of the best coastal viewpoints on Oʻahu.',
-          tip: 'Street parking in Lanikai is very tight on holidays — park at Kailua Beach Park and walk 10 min, or grab lunch in Kailua Town first.'
+          description: 'Powdery white sand and calm turquoise water overlooking the Mokulua Islands, plus the optional 1-hour Lanikai Pillbox hike for golden-hour coastal views.',
+          tip: 'Street parking in Lanikai is tight on holidays — park at Kailua Beach Park and walk 10 min.'
         },
         {
           id: 'd3-dinner',
           name: 'Thanksgiving Dinner (Kailua or Waikiki)',
-          time: '6:00 PM',
+          time: '6:45 PM – 10:00 PM',
           category: 'food',
           lat: 21.3972,
           lng: -157.7418,
-          duration: '1.5 hrs',
+          duration: '2 hrs+',
           driveFromPrev: '10 min to Kailua Town',
-          description: 'Enjoy a reserved Thanksgiving meal in Kailua (Over Easy / Buzz’s / Uahi Island Grill) or drive back over the Pali Hwy for a Waikiki holiday dinner.',
+          description: 'Enjoy a reserved Thanksgiving meal in Kailua (Buzz’s / Uahi Island Grill) or drive back over the Pali Hwy for a Waikiki holiday dinner and late-night stroll.',
           reservationRequired: 'Reserve ASAP for 11/26',
           tip: 'Overnight parking tonight: Waikiki Banyan (~$30) is a 3-min walk from Hotel Renew.'
         }
@@ -187,57 +174,57 @@ const TRIP_DATA = {
       theme: 'Windward Coast & Polynesian Cultural Center',
       color: '#7c4d8a',
       carInSplitMode: true,
-      summary: 'Scenic Windward landmarks in the morning (Pali Lookout, Byodo-In, Kualoa), then a full afternoon & evening at the Polynesian Cultural Center.',
+      summary: '9:30 AM scenic Windward drive (Pali Lookout, Byodo-In Temple, Kualoa), followed by a full afternoon & evening at the Polynesian Cultural Center.',
       holidayNote: 'Polynesian Cultural Center is OPEN today (12:00 PM – 9:00 PM). Book your package (villages + Aliʻi Lūʻau + Hā: Breath of Life show) in advance.',
       stops: [
         {
           id: 'd4-pali',
           name: 'Nuʻuanu Pali Lookout',
-          time: '8:30 AM',
+          time: '9:50 AM',
           category: 'hike',
           lat: 21.3669,
           lng: -157.7931,
-          duration: '30 min',
-          driveFromPrev: '20 min from Waikiki',
+          duration: '25 min',
+          driveFromPrev: '20 min from Waikiki (9:30 AM depart)',
           description: 'Sweeping, windswept cliff overlook of the lush Koʻolau Mountains and Windward coast — site of King Kamehameha I’s pivotal 1795 battle.',
           tip: 'Parking is $7 (non-residents) via kiosk; hold onto your hat!'
         },
         {
           id: 'd4-byodoin',
           name: 'Byodo-In Temple (Valley of the Temples)',
-          time: '9:20 AM',
+          time: '10:30 AM',
           category: 'culture',
           lat: 21.4309,
           lng: -157.8321,
           duration: '45 min',
           driveFromPrev: '15 min drive',
           description: 'Serene Japanese replica temple tucked beneath sheer emerald Koʻolau cliffs, complete with koi ponds, black swans, and a sacred brass bell.',
-          tip: 'Entry ~$5–$7. Peaceful in the morning before tour buses arrive.'
+          tip: 'Entry ~$5–$7. Open daily 8:30 AM – 4:30 PM.'
         },
         {
           id: 'd4-kualoa',
           name: 'Kualoa Regional Park & Chinaman’s Hat',
-          time: '10:30 AM',
+          time: '11:30 AM',
           category: 'beach',
           lat: 21.5125,
           lng: -157.8364,
-          duration: '1 hr',
+          duration: '45 min',
           driveFromPrev: '15 min coastal drive',
           description: 'Stop at Kualoa Regional Park for dramatic views of Mokoliʻi Island (Chinaman’s Hat) and the Jurassic-Park mountain ridges across the highway.',
-          tip: 'Grab an early garlic shrimp plate or stop at Hukilau Marketplace right outside PCC for lunch.'
+          tip: 'Grab a quick lunch at Hukilau Marketplace right outside PCC before entering the villages.'
         },
         {
           id: 'd4-pcc',
           name: 'Polynesian Cultural Center (Lāʻie)',
-          time: '12:00 PM – 9:00 PM',
+          time: '12:45 PM – 9:00 PM',
           category: 'culture',
           lat: 21.6391,
           lng: -157.9218,
-          duration: '8–9 hrs',
+          duration: '8 hrs',
           driveFromPrev: '25 min north along Kamehameha Hwy',
           description: 'Explore 6 authentic Polynesian island villages (Hawaiʻi, Tahiti, Samoa, Tonga, Fiji, Aotearoa), watch the Canoe Pageant, feast at the Aliʻi Lūʻau, and finish with the fire-knife evening show Hā: Breath of Life.',
           reservationRequired: 'Book PCC package online',
-          tip: 'Arrive right around noon to catch the Samoa fire-making show and Canoe Pageant. ~1 hr drive back to Waikiki after the 9 PM finale.'
+          tip: '~1 hr drive back to Waikiki after the 9 PM finale (back around 10:15 PM; late-night spots in Waikiki stay open past 11 PM).'
         }
       ]
     },
@@ -245,59 +232,72 @@ const TRIP_DATA = {
       day: 5,
       date: 'Sat, Nov 28',
       shortLabel: 'Day 5 · 11/28',
-      theme: 'North Shore Big Waves, Waimea & Haleʻiwa',
+      theme: 'North Shore Shark Cage Dive, Big Waves & Haleʻiwa',
       color: '#2e7d5b',
       carInSplitMode: true,
-      summary: 'Experience Oʻahu’s legendary winter surf season, botanical waterfall valley, garlic shrimp trucks, and historic Haleʻiwa Town.',
-      holidayNote: 'Late November = prime North Shore winter swell! Watch surfers from the sand — avoid swimming at Pipeline/Sunset when waves are huge.',
+      summary: '9:30 AM head north for a 2-hour North Shore shark cage dive, Waimea Valley waterfall, winter big-wave beaches, garlic shrimp, and Haleʻiwa Town.',
+      holidayNote: 'Late November = prime North Shore winter swell! Take motion-sickness meds 45 min before the shark boat if prone to seasickness, and watch Pipeline/Sunset waves from the sand.',
       stops: [
         {
           id: 'd5-coffee',
           name: 'Green World Coffee Farm (or Dole Plantation)',
-          time: '8:45 AM',
+          time: '10:10 AM',
           category: 'food',
           lat: 21.5223,
           lng: -158.0372,
-          duration: '30 min',
-          driveFromPrev: '40 min drive via H-2',
-          description: 'Quick pit stop in central Oʻahu for locally roasted Hawaiian espresso and fresh pastries on the way up to the North Shore.',
+          duration: '20 min',
+          driveFromPrev: '40 min drive via H-2 (9:30 AM depart)',
+          description: 'Quick pit stop in central Oʻahu for locally roasted Hawaiian espresso and fresh pastries on the way up to Haleʻiwa.',
           tip: 'Dole Plantation is 3 minutes further north if you want a quick Dole Whip.'
+        },
+        {
+          id: 'd5-shark',
+          name: 'North Shore Shark Cage Dive (Haleʻiwa Harbor)',
+          time: '11:00 AM – 1:00 PM',
+          category: 'adventure',
+          lat: 21.5947,
+          lng: -158.1059,
+          duration: '2 hrs',
+          driveFromPrev: '15 min north to Haleʻiwa Boat Harbor',
+          description: 'Board a boat from Haleʻiwa Small Boat Harbor (~3 miles offshore) to observe wild Galapagos and sandbar sharks up close from a safe floating underwater cage. Mask & snorkel provided — no scuba experience needed.',
+          reservationRequired: 'Book online (~$100–$120/person)',
+          tip: 'Check in 15–20 min early at Haleʻiwa Small Boat Harbor. Bring swimwear, towel, and reef-safe sunscreen.'
         },
         {
           id: 'd5-waimea',
           name: 'Waimea Valley & Waimea Bay',
-          time: '9:45 AM',
+          time: '1:20 PM',
           category: 'hike',
           lat: 21.6368,
           lng: -158.0539,
           duration: '2 hrs',
-          driveFromPrev: '20 min drive',
-          description: 'Easy, shaded 1.5-mile paved walk through lush Hawaiian botanical gardens to Waimea Falls (lifeguarded swimming allowed when conditions permit), right across from iconic Waimea Bay.',
-          tip: 'Waimea Bay parking fills early — Waimea Valley has its own large lot.'
+          driveFromPrev: '12 min north (pass Laniakea on the way)',
+          description: 'Easy, shaded 1.5-mile paved walk through lush Hawaiian botanical gardens to Waimea Falls (lifeguarded swimming when conditions permit), right across from iconic Waimea Bay.',
+          tip: 'Waimea Valley closes at 4:00 PM (last waterfall swim ~3:30 PM), so going right after the shark dive gives you plenty of time!'
         },
         {
           id: 'd5-pipeline',
           name: 'Banzai Pipeline, Sunset Beach & Shrimp Trucks',
-          time: '12:15 PM',
+          time: '3:30 PM',
           category: 'beach',
           lat: 21.6649,
           lng: -158.0531,
-          duration: '2 hrs',
-          driveFromPrev: '5–10 min along Kam Hwy',
-          description: 'Watch pro surfers tackle massive winter barrels at Ehukai Beach (Banzai Pipeline) and Sunset Beach, and refuel at Giovanni’s Shrimp Truck or Ted’s Bakery (haupia pie!).',
-          tip: 'Bring cash for some food trucks and roadside fruit stands.'
+          duration: '1.5 hrs',
+          driveFromPrev: '8 min along Kam Hwy',
+          description: 'Watch pro surfers tackle massive winter barrels in golden-hour light at Ehukai Beach (Banzai Pipeline) and Sunset Beach, and refuel at Giovanni’s Shrimp Truck or Ted’s Bakery (chocolate haupia pie!).',
+          tip: 'Bring small cash for food trucks and roadside fruit stands.'
         },
         {
           id: 'd5-haleiwa',
           name: 'Haleʻiwa Town & Laniakea Turtle Beach',
-          time: '2:45 PM',
+          time: '5:15 PM – 8:00 PM',
           category: 'food',
           lat: 21.5928,
           lng: -158.1034,
-          duration: '2 hrs',
+          duration: '2.5 hrs',
           driveFromPrev: '15 min south',
-          description: 'Stroll surf boutiques and art galleries in historic Haleʻiwa, cool off with Matsumoto Shave Ice (get it with ice cream + condensed milk), and spot basking green sea turtles at Laniakea Beach.',
-          tip: 'Head back to Waikiki by ~5 PM to return your rental car (if doing the 3-day split plan) and skip Sat/Sun overnight parking fees!'
+          description: 'Spot basking green sea turtles at Laniakea Beach right before sunset, then stroll surf boutiques, grab Matsumoto Shave Ice (closes ~6 PM), and have a relaxed North Shore dinner before driving back to Waikiki.',
+          tip: 'Drive back ~8:30–9:30 PM. If doing the 3-day car split, check if your Waikiki branch has an after-hours key drop or return Sunday morning.'
         }
       ]
     },
@@ -305,59 +305,46 @@ const TRIP_DATA = {
       day: 6,
       date: 'Sun, Nov 29',
       shortLabel: 'Day 6 · 11/29',
-      theme: 'Pearl Harbor, Honolulu Culture & Kakaʻako Sunset',
+      theme: 'Honolulu Culture, Kakaʻako Murals & Farewell Sunset',
       color: '#b06c19',
       carInSplitMode: false,
-      summary: 'A meaningful morning at Pearl Harbor followed by urban Honolulu, Kakaʻako street art, and a golden farewell sunset.',
-      holidayNote: 'No car needed today: Pearl Harbor is a ~20-min Uber from Waikiki, and bags/backpacks are not allowed inside the memorial (bag storage is $7).',
+      summary: 'Leisurely 10:00 AM start in urban Honolulu: ʻIolani Palace grounds, Kakaʻako street art & food hall, Magic Island sunset, and a late Waikiki farewell night.',
+      holidayNote: 'No car needed today — short Ubers between Waikiki, Downtown, and Kakaʻako. Pearl Harbor has been moved to Day 7 as an optional flex stop.',
       stops: [
         {
-          id: 'd6-pearl',
-          name: 'Pearl Harbor & USS Arizona Memorial',
-          time: '8:30 AM',
-          category: 'culture',
-          lat: 21.3679,
-          lng: -157.9383,
-          duration: '2.5–3 hrs',
-          driveFromPrev: '20 min Uber from Waikiki',
-          description: 'Visit the Pearl Harbor Visitor Center museums and take the Navy shuttle boat out to the solemn USS Arizona Memorial.',
-          reservationRequired: 'Reserve on Recreation.gov ($1 fee)',
-          tip: 'Tickets release 8 weeks out AND a batch releases at 3:00 PM HST the day before (Sat 11/28). Bring only a clear bag or wallet/phone.'
-        },
-        {
           id: 'd6-iolani',
-          name: 'ʻIolani Palace & Downtown Honolulu',
-          time: '12:00 PM',
+          name: 'ʻIolani Palace Grounds & Downtown Honolulu',
+          time: '10:00 AM',
           category: 'culture',
           lat: 21.3068,
           lng: -157.8588,
           duration: '1.5 hrs',
-          driveFromPrev: '15 min Uber',
-          description: 'See the King Kamehameha Statue and the exterior/grounds of ʻIolani Palace — the only official royal residence in the United States (note: interior tours are closed Sundays, grounds open for photos).',
-          tip: 'Walk 5 min into Chinatown or head straight to Kakaʻako for lunch.'
+          driveFromPrev: '15 min Uber from Waikiki (9:30 AM start)',
+          description: 'See the King Kamehameha Statue and walk the grounds of ʻIolani Palace — the only official royal residence in the United States (note: interior tours are closed Sundays, grounds open for photos), plus a quick Chinatown stroll.',
+          tip: 'Easy walk or 5-min Uber over to Kakaʻako for lunch.'
         },
         {
           id: 'd6-kakaako',
           name: 'SALT at Our Kakaʻako & Street Murals',
-          time: '1:45 PM',
+          time: '12:00 PM',
           category: 'food',
           lat: 21.2983,
           lng: -157.8606,
-          duration: '2 hrs',
+          duration: '2.5 hrs',
           driveFromPrev: '5 min Uber / 15 min walk',
-          description: 'Explore Honolulu’s creative neighborhood: colorful POW! WOW! murals, Moku Kitchen or Highway Inn for Hawaiian food, and Arvo Café for Aussie-style coffee & toast.',
-          tip: 'Great spot for local gifts and coffee beans.'
+          description: 'Explore Honolulu’s creative neighborhood: colorful POW! WOW! murals, Highway Inn (kalua pork & lau lau) or Moku Kitchen for lunch, and Arvo Café for Aussie-style coffee & toast.',
+          tip: 'Great spot for local gifts, craft shops, and Hawaiian coffee beans.'
         },
         {
           id: 'd6-alamoana',
           name: 'Ala Moana Beach Park Sunset & Farewell Dinner',
-          time: '5:00 PM',
+          time: '3:30 PM – 10:30 PM',
           category: 'beach',
           lat: 21.2889,
           lng: -157.8484,
-          duration: '2 hrs',
+          duration: 'Afternoon & Late Evening',
           driveFromPrev: '5 min Uber',
-          description: 'Catch your final Oʻahu sunset from Magic Island at Ala Moana Beach Park (classic Diamond Head backdrop), then head back to Waikiki for a farewell dinner.',
+          description: 'Relax at Ala Moana Beach Park and catch your final Oʻahu sunset from Magic Island (classic Diamond Head backdrop), then head back to Waikiki for a farewell dinner and nightcap.',
           tip: 'Try House Without a Key (live Hawaiian music + hula at sunset) or Monkeypod Kitchen Waikiki.'
         }
       ]
@@ -366,23 +353,48 @@ const TRIP_DATA = {
       day: 7,
       date: 'Mon, Nov 30',
       shortLabel: 'Day 7 · 11/30',
-      theme: 'Slow Waikiki Morning & Flight Home',
+      theme: 'Slow Waikiki Morning, Optional Flex Stops & Flight Home',
       color: '#4f6d7a',
       carInSplitMode: false,
-      summary: 'One last morning dip in Waikiki, coffee & açaí bowl, souvenir pickup, and an easy afternoon flight home on WN2026.',
-      holidayNote: 'Leave Hotel Renew by 12:30–1:00 PM for your ~3:15–3:40 PM departure on WN2026 (allow extra time for HNL agricultural baggage screening).',
+      summary: 'Relaxed final Waikiki morning plus optional flex stops (Pearl Harbor or Catamaran Sail) if you’ve covered everything else before your afternoon flight WN2026.',
+      holidayNote: 'Leave Hotel Renew by 12:45–1:00 PM for WN2026 (~3:15–3:40 PM departure). Pearl Harbor and the Catamaran Sail are kept here as optional add-ons if you have extra time/energy.',
       stops: [
         {
           id: 'd7-morning',
           name: 'Final Waikiki Swim & Kona Coffee',
-          time: '8:30 AM',
+          time: '9:30 AM',
           category: 'beach',
           lat: 21.2741,
           lng: -157.8245,
-          duration: '2.5 hrs',
+          duration: '2 hrs',
           driveFromPrev: 'Steps from Hotel Renew',
-          description: 'Take a morning dip at Waikiki Beach, grab Kona coffee & pastries at Kai Coffee or an açaí bowl at Tropical Tribe / Sunrise Shack, and pick up macadamia nuts or Honolulu Cookie Company gifts.',
+          description: 'Take a relaxed morning dip at Waikiki Beach, grab Kona coffee & pastries at Kai Coffee or an açaí bowl at Tropical Tribe / Sunrise Shack, and pick up Honolulu Cookie Company or macadamia nut gifts.',
           tip: 'Hotel Renew can hold your luggage if you check out at 11 AM and want a final lunch on Kalakaua Ave.'
+        },
+        {
+          id: 'd7-catamaran-opt',
+          name: 'Optional: Waikiki Catamaran Sail',
+          time: 'Flex · Morning (10:00–11:30 AM)',
+          category: 'adventure',
+          lat: 21.2768,
+          lng: -157.8294,
+          duration: '1–1.5 hrs',
+          driveFromPrev: '8 min beach walk from Hotel Renew',
+          description: 'Optional flex activity if you feel like one last ride on the water: a breezy morning sail directly off Waikiki Beach (Maitaʻi or Kepoikai) with Diamond Head views.',
+          tip: 'Easy to skip if you prefer a slow beach morning — or book a day ahead if you decide to go.'
+        },
+        {
+          id: 'd7-pearl-opt',
+          name: 'Optional: Pearl Harbor & USS Arizona Memorial',
+          time: 'Flex · 9:30 AM – 12:00 PM',
+          category: 'culture',
+          lat: 21.3679,
+          lng: -157.9383,
+          duration: '2.5 hrs',
+          driveFromPrev: '20 min Uber (right on the way to HNL!)',
+          description: 'Optional flex stop if you’ve covered everything else: Pearl Harbor Visitor Center and the Navy boat out to the USS Arizona Memorial. Conveniently located 10 min from HNL airport.',
+          reservationRequired: 'Optional · Recreation.gov ($1 fee)',
+          tip: 'No bags/backpacks allowed inside (on-site bag storage is $7/bag, or leave suitcases at Hotel Renew and swing back). Only do this if you start by ~9:30 AM to make your 3:15 PM flight comfortably.'
         },
         {
           id: 'd7-hnl',
@@ -392,7 +404,7 @@ const TRIP_DATA = {
           lat: 21.3187,
           lng: -157.9225,
           duration: 'Airport',
-          driveFromPrev: '25–30 min Uber from Waikiki',
+          driveFromPrev: '25–30 min Uber from Waikiki (depart ~12:45 PM)',
           description: 'Check in at HNL Terminal 2 (remember to pass checked bags through the USDA Agricultural Inspection scanner before dropping them!). Fly home to OAK.',
           tip: 'Aloha & safe travels!'
         }
@@ -560,15 +572,21 @@ const TRIP_DATA = {
           when: 'Book ASAP — holiday week sells out'
         },
         {
+          id: 'chk-shark',
+          title: 'North Shore Shark Cage Dive (Sat 11/28 · 11:00 AM)',
+          detail: 'Book a 2-hour shark cage tour departing Haleʻiwa Small Boat Harbor (e.g., North Shore Shark Adventures or Haleiwa Shark Tours, ~$100–$120/person).',
+          when: 'Book ASAP — Saturday slots fill fast'
+        },
+        {
           id: 'chk-diamond',
           title: 'Diamond Head State Monument Reservation',
-          detail: 'Reserve entry ($5/person) for Wed 11/25 at 7:00 AM via gostateparks.hawaii.gov. No parking pass needed if walking/Ubering.',
+          detail: 'Reserve entry ($5/person) for Wed 11/25 at 9:00–10:00 AM via gostateparks.hawaii.gov. No parking pass needed if walking/Ubering.',
           when: 'Book ASAP (up to 30 days ahead)'
         },
         {
           id: 'chk-thanksgiving',
           title: 'Thanksgiving Dinner Reservation (Thu 11/26)',
-          detail: 'Holiday tables in Waikiki and Kailua fill up fast. Lock in a spot for Thursday evening.',
+          detail: 'Holiday tables in Waikiki and Kailua fill up fast. Lock in a spot for Thursday evening (~6:45 PM).',
           when: 'Book ASAP'
         },
         {
@@ -581,26 +599,26 @@ const TRIP_DATA = {
     },
     {
       id: 'timed',
-      title: 'Time-Sensitive Booking Windows',
+      title: 'Time-Sensitive & Optional Bookings',
       urgent: true,
       items: [
         {
           id: 'chk-hanauma',
-          title: 'Hanauma Bay Snorkeling Reservation',
+          title: 'Hanauma Bay Snorkeling Reservation (10:00 AM slot)',
           detail: 'Opens strictly 2 days ahead at 7:00 AM HST (9:00 AM PST) on pros.hnl.info ($25/person). Sells out in ~5 minutes!',
           when: 'Alarm: Tue 11/24 at 7:00 AM HST for Thu 11/26'
         },
         {
           id: 'chk-pearl',
-          title: 'Pearl Harbor — USS Arizona Boat Ticket',
-          detail: 'Check Recreation.gov ($1 fee) for Sun 11/29. If sold out, a fresh batch drops at 3:00 PM HST the day before (Sat 11/28).',
-          when: 'Check now + backup alarm Sat 11/28 at 3:00 PM HST'
+          title: 'Optional (Day 7 Flex): Pearl Harbor — USS Arizona Ticket',
+          detail: 'Only if you decide to fit it in on Mon 11/30 morning before your flight. Day-before tickets drop Sun 11/29 at 3:00 PM HST on Recreation.gov ($1 fee).',
+          when: 'Optional · decide on-island'
         },
         {
           id: 'chk-catamaran',
-          title: 'Waikiki Sunset Catamaran Sail',
-          detail: 'Book Maitaʻi Catamaran or Kepoikai for Wed 11/25 (5:00 PM) once weather looks clear.',
-          when: '1–2 days before'
+          title: 'Optional (Day 7 Flex): Waikiki Catamaran Sail',
+          detail: 'Only if you want a final morning sail on Mon 11/30 (Maitaʻi Catamaran or Kepoikai).',
+          when: 'Optional · book 1 day ahead if interested'
         }
       ]
     },
