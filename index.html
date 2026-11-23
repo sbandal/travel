@@ -3,168 +3,164 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Oʻahu Thanksgiving Week · Interactive Trip Planner (Nov 24–30, 2026)</title>
-    <meta
-      name="description"
-      content="Interactive 7-day Oʻahu vacation planner for Nov 24–30, 2026 staying at Hotel Renew in Waikiki, featuring a color-coded island map, day-by-day itinerary, local food guide, Thanksgiving booking checklist, and car rental vs. parking calculator."
-    />
-
-    <!-- Typography -->
+    <title>Travel Plans · Interactive Trip Planners</title>
+    <meta name="description" content="Collection of interactive travel itineraries, maps, and local food guides." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <style>
+      :root {
+        --bg: #faf8f4;
+        --surface: #ffffff;
+        --ink: #1a2126;
+        --muted: #5a6670;
+        --accent: #0d6e6e;
+        --border: rgba(26, 33, 38, 0.1);
+      }
 
-    <!-- Leaflet Interactive Map -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
+      * {
+        box-sizing: border-box;
+      }
 
-    <link rel="stylesheet" href="styles.css" />
+      body {
+        margin: 0;
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        width: 100%;
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 56px 24px 72px;
+        flex: 1;
+      }
+
+      .kicker {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 10px;
+      }
+
+      h1 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: clamp(2rem, 4vw, 2.85rem);
+        letter-spacing: -0.025em;
+        margin: 0 0 10px;
+      }
+
+      .lead {
+        color: var(--muted);
+        font-size: 16px;
+        margin: 0 0 36px;
+        max-width: 560px;
+      }
+
+      .trip-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 24px;
+      }
+
+      .trip-card {
+        display: flex;
+        flex-direction: column;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 4px 18px rgba(26, 33, 38, 0.06);
+        transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease;
+      }
+
+      .trip-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(26, 33, 38, 0.11);
+      }
+
+      .trip-card img {
+        width: 100%;
+        height: 190px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .trip-card-body {
+        padding: 20px;
+      }
+
+      .trip-dates {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11.5px;
+        color: var(--accent);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 6px;
+      }
+
+      .trip-card h2 {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 22px;
+        margin: 0 0 8px;
+      }
+
+      .trip-card p {
+        margin: 0 0 14px;
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .trip-cta {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      footer {
+        text-align: center;
+        padding: 24px;
+        font-size: 13px;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+      }
+    </style>
   </head>
   <body>
-    <!-- Hero Banner -->
-    <header class="hero">
-      <img
-        src="assets/oahu-hero.jpg"
-        alt="Golden hour aerial view of Waikiki Beach and Diamond Head crater on Oʻahu, Hawaiʻi"
-        class="hero-media"
-      />
-      <div class="hero-scrim" aria-hidden="true"></div>
-      <div class="hero-inner">
-        <p class="hero-kicker">Oʻahu, Hawaiʻi · Nov 24 – Nov 30, 2026</p>
-        <h1>Oʻahu Thanksgiving Week</h1>
-        <p class="hero-subtitle">
-          Seven days of turquoise beaches, crater &amp; ridge hikes, local poke &amp; garlic shrimp,
-          Polynesian Cultural Center, and winter surf — anchored at Hotel Renew in Waikiki.
-        </p>
+    <main>
+      <p class="kicker">Trip Archive &amp; Planners</p>
+      <h1>Travel Plans</h1>
+      <p class="lead">Interactive itineraries, island maps, local food guides, and one-tap Google Maps directions.</p>
 
-        <div class="trip-strip">
-          <div class="trip-fact">
-            <span class="trip-fact-label">Outbound Flight</span>
-            <span class="trip-fact-value">Southwest WN3882</span>
-            <span class="trip-fact-sub">Tue 11/24 · Arrives HNL ~9:10 PM</span>
+      <div class="trip-grid">
+        <a class="trip-card" href="./oahu/">
+          <img src="./oahu/assets/oahu-hero.jpg" alt="Waikiki Beach and Diamond Head at golden hour, Oʻahu" />
+          <div class="trip-card-body">
+            <div class="trip-dates">Nov 24 – Nov 30, 2026</div>
+            <h2>Oʻahu, Hawaiʻi</h2>
+            <p>
+              7-day Thanksgiving week itinerary from Hotel Renew in Waikiki — Hanauma Bay, Koko Crater sunset,
+              Polynesian Cultural Center, North Shore shark cage dive, and Hoʻomaluhia Botanical Garden.
+            </p>
+            <span class="trip-cta">Open Oʻahu Planner →</span>
           </div>
-          <div class="trip-fact">
-            <span class="trip-fact-label">Home Base</span>
-            <span class="trip-fact-value">Hotel Renew · Waikiki</span>
-            <span class="trip-fact-sub">129 Paoakalani Ave (1 blk to beach)</span>
-          </div>
-          <div class="trip-fact">
-            <span class="trip-fact-label">Return Flight</span>
-            <span class="trip-fact-value">Southwest WN2026</span>
-            <span class="trip-fact-sub">Mon 11/30 · Departs HNL ~3:15 PM</span>
-          </div>
-          <div class="trip-fact">
-            <span class="trip-fact-label">Daily Pace</span>
-            <span class="trip-fact-value">~9:30 AM – 11:00 PM</span>
-            <span class="trip-fact-sub">Relaxed mornings · Late evenings</span>
-          </div>
-        </div>
+        </a>
       </div>
-    </header>
-
-    <!-- Sticky Navigation -->
-    <nav class="top-nav" aria-label="Trip planner sections">
-      <div class="top-nav-inner">
-        <div class="nav-tabs" role="tablist">
-          <button class="nav-tab is-active" id="tab-planner" data-tab="planner" role="tab">
-            Map &amp; Itinerary
-          </button>
-          <button class="nav-tab" id="tab-food" data-tab="food" role="tab">
-            Food &amp; Local Eats
-          </button>
-          <button class="nav-tab" id="tab-checklist" data-tab="checklist" role="tab">
-            Bookings &amp; Checklist
-            <span class="nav-tab-count" id="nav-checklist-count">0/13</span>
-          </button>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="main-container">
-      <!-- PANEL 1: Interactive Map & Day-by-Day Itinerary -->
-      <section class="view-panel is-active" id="panel-planner" aria-labelledby="tab-planner">
-        <div class="filter-bar">
-          <div class="day-pills" id="day-pills" aria-label="Filter by day"></div>
-          <div class="category-pills" id="category-pills" aria-label="Filter by category"></div>
-        </div>
-
-        <div class="planner-grid">
-          <div class="map-column">
-            <div class="map-frame">
-              <div id="oahu-map" role="region" aria-label="Interactive map of Oʻahu itinerary stops"></div>
-              <div class="map-legend">
-                <div class="map-legend-items">
-                  <span class="legend-item">★ Hotel Renew (Home Base)</span>
-                  <span class="legend-item">━━ Day route (tap any pin for Google Maps)</span>
-                </div>
-                <button class="map-reset-btn" id="map-reset-btn">Reset View</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="itinerary-column" id="itinerary-list"></div>
-        </div>
-      </section>
-
-      <!-- PANEL 2: Food & Local Eats -->
-      <section class="view-panel" id="panel-food" aria-labelledby="tab-food">
-        <div class="section-intro">
-          <h2>Oʻahu Local Food Guide</h2>
-          <p>
-            From hot malasadas and fresh ahi poke walking distance from Hotel Renew to North Shore garlic
-            shrimp trucks and shave ice. Click <strong>Show on map</strong> on any spot to locate it immediately.
-          </p>
-        </div>
-
-        <div class="food-filters" id="food-filters"></div>
-        <div class="food-grid" id="food-grid"></div>
-      </section>
-
-      <!-- PANEL 3: Bookings & Checklist -->
-      <section class="view-panel" id="panel-checklist" aria-labelledby="tab-checklist">
-        <div class="section-intro">
-          <h2>Thanksgiving Week Bookings &amp; Checklist</h2>
-          <p>
-            Oʻahu’s top spots require advance reservations — especially during Thanksgiving week. Your progress
-            saves automatically in your browser.
-          </p>
-        </div>
-
-        <div class="checklist-header-bar">
-          <div class="progress-wrap">
-            <div class="progress-label">
-              <span id="checklist-progress-text">0 of 13 completed</span>
-              <span id="checklist-progress-pct">0%</span>
-            </div>
-            <div class="progress-track">
-              <div class="progress-fill" id="checklist-progress-fill" style="width: 0%"></div>
-            </div>
-          </div>
-          <button class="map-reset-btn" id="checklist-reset-btn">Reset Checklist</button>
-        </div>
-
-        <div class="checklist-groups" id="checklist-groups"></div>
-      </section>
     </main>
 
-    <footer class="site-footer">
-      Oʻahu Thanksgiving Trip Planner · Nov 24–30, 2026 · Built for Hotel Renew, Waikiki (WN3882 / WN2026)
-    </footer>
-
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
-    <script src="data.js"></script>
-    <script src="app.js"></script>
+    <footer>sbandal/travel · GitHub Pages</footer>
   </body>
 </html>
