@@ -425,13 +425,12 @@
   function renderFoodGuide() {
     const filters = [
       { id: 'all', label: 'All Local Eats' },
-      { id: 'poke', label: 'Poke' },
-      { id: 'malasadas', label: 'Malasadas' },
-      { id: 'shrimp', label: 'Garlic Shrimp' },
-      { id: 'shave-ice', label: 'Shave Ice' },
-      { id: 'plate-lunch', label: 'Plate Lunch' },
-      { id: 'dinner', label: 'Sit-Down & Udon' },
-      { id: 'coffee', label: 'Coffee & Brunch' }
+      { id: 'fruit', label: 'Tropical Fruit' },
+      { id: 'bakery', label: 'Bakeries & Pastries' },
+      { id: 'coffee', label: 'Coffee' },
+      { id: 'seafood', label: 'Poke & Seafood' },
+      { id: 'chicken', label: 'Chicken & Udon' },
+      { id: 'shave-ice', label: 'Shave Ice' }
     ];
 
     const filterEl = document.getElementById('food-filters');
