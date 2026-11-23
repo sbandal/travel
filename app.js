@@ -65,21 +65,36 @@
      Map Initialization & Rendering
      ------------------------------------------------------------------------ */
   function initMap() {
-    map = L.map('oahu-map', {
-      center: [21.46, -157.93],
-      zoom: 10,
-      scrollWheelZoom: true
-    });
+    if (typeof L === 'undefined') {
+      const mapEl = document.getElementById('oahu-map');
+      if (mapEl) {
+        mapEl.innerHTML =
+          '<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:28px;text-align:center;color:#4a555e;font-size:14px;">' +
+          '<div><strong style="display:block;margin-bottom:6px;color:#1a2126;">Interactive map tiles require network access</strong>' +
+          'Open the live GitHub Pages site to explore the interactive Oʻahu map. All itinerary filters, food guide, checklist, and car calculator controls work right here.</div></div>';
+      }
+      return;
+    }
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-      subdomains: 'abcd',
-      maxZoom: 19
-    }).addTo(map);
+    try {
+      map = L.map('oahu-map', {
+        center: [21.46, -157.93],
+        zoom: 10,
+        scrollWheelZoom: true
+      });
 
-    routesLayer = L.layerGroup().addTo(map);
-    markersLayer = L.layerGroup().addTo(map);
-    foodHighlightLayer = L.layerGroup().addTo(map);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+        subdomains: 'abcd',
+        maxZoom: 19
+      }).addTo(map);
+
+      routesLayer = L.layerGroup().addTo(map);
+      markersLayer = L.layerGroup().addTo(map);
+      foodHighlightLayer = L.layerGroup().addTo(map);
+    } catch (_) {
+      map = null;
+    }
   }
 
   function renderMap() {
@@ -626,16 +641,22 @@
   /* ------------------------------------------------------------------------
      Boot
      ------------------------------------------------------------------------ */
-  document.addEventListener('DOMContentLoaded', () => {
+  function boot() {
     loadState();
-    initMap();
     wireEvents();
     renderDayPills();
     renderCategoryPills();
     renderItinerary();
-    renderMap();
     renderFoodGuide();
     renderChecklist();
     renderCarStrategy();
-  });
+    initMap();
+    renderMap();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
 })();
