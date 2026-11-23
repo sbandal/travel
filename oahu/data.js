@@ -240,32 +240,32 @@ const TRIP_DATA = {
       color: '#2e7d5b',
       carInSplitMode: true,
       summary: '9:30 AM head north for a 2-hour North Shore shark cage dive, Waimea Valley waterfall, winter big-wave beaches, garlic shrimp, and Haleʻiwa Town.',
-      holidayNote: 'Late November = prime North Shore winter swell! Take motion-sickness meds 45 min before the shark boat if prone to seasickness, and watch Pipeline/Sunset waves from the sand.',
+      holidayNote: 'Confirmed Booking: Hawaii Shark Encounters at 11:00 AM (Check-in 10:30 AM at 66-105 Haleʻiwa Rd). Take motion-sickness meds 45 min before boarding if prone to seasickness, and watch Pipeline/Sunset waves from the sand.',
       stops: [
         {
           id: 'd5-coffee',
-          name: 'Green World Coffee Farm (or Dole Plantation)',
-          time: '10:10 AM',
+          name: 'Green World Coffee Farm (Quick Stop)',
+          time: '10:00 AM',
           category: 'food',
           lat: 21.5223,
           lng: -158.0372,
-          duration: '20 min',
-          driveFromPrev: '40 min drive via H-2 (9:30 AM depart)',
-          description: 'Quick pit stop in central Oʻahu for locally roasted Hawaiian espresso and fresh pastries on the way up to Haleʻiwa.',
-          tip: 'Dole Plantation is 3 minutes further north if you want a quick Dole Whip.'
+          duration: '15 min',
+          driveFromPrev: '40 min drive via H-2 (depart Waikiki ~9:15–9:20 AM)',
+          description: 'Quick coffee & pastry grab-and-go in central Oʻahu on the way to Haleʻiwa (skip or keep under 10 min if traffic is heavy so you make 10:30 AM shark check-in!).',
+          tip: 'Dole Plantation is 3 minutes further north if you want a quick Dole Whip on the drive back.'
         },
         {
           id: 'd5-shark',
-          name: 'North Shore Shark Cage Dive (Haleʻiwa Harbor)',
-          time: '11:00 AM – 1:00 PM',
+          name: 'Hawaii Shark Encounters — Shark Cage Dive',
+          time: '11:00 AM – 1:00 PM (Check-in 10:30 AM)',
           category: 'adventure',
           lat: 21.5947,
           lng: -158.1059,
           duration: '2 hrs',
-          driveFromPrev: '15 min north to Haleʻiwa Boat Harbor',
-          description: 'Board a boat from Haleʻiwa Small Boat Harbor (~3 miles offshore) to observe wild Galapagos and sandbar sharks up close from a safe floating underwater cage. Mask & snorkel provided — no scuba experience needed.',
-          reservationRequired: 'Book online (~$100–$120/person)',
-          tip: 'Check in 15–20 min early at Haleʻiwa Small Boat Harbor. Bring swimwear, towel, and reef-safe sunscreen.'
+          driveFromPrev: '15 min north to 66-105 Haleʻiwa Rd',
+          description: 'Depart from Haleʻiwa Small Boat Harbor (~3 miles offshore) to observe wild Galapagos and sandbar sharks up close from a floating underwater cage. Mask & snorkel provided — no scuba experience needed.',
+          reservationRequired: '✓ Booked · Check-in 10:30 AM',
+          tip: 'Address: 66-105 Haleʻiwa Rd, Haleʻiwa, HI 96712. Arrive by 10:30 AM (30 min before departure). Bring swimwear, towel, and reef-safe sunscreen.'
         },
         {
           id: 'd5-waimea',
@@ -650,9 +650,10 @@ const TRIP_DATA = {
         },
         {
           id: 'chk-shark',
-          title: 'North Shore Shark Cage Dive (Sat 11/28 · 11:00 AM)',
-          detail: 'Book a 2-hour shark cage tour departing Haleʻiwa Small Boat Harbor (e.g., North Shore Shark Adventures or Haleiwa Shark Tours, ~$100–$120/person).',
-          when: 'Book ASAP — Saturday slots fill fast'
+          title: 'North Shore Shark Cage Dive (Booked)',
+          detail: 'Sat 11/28 · 11:00 AM (Check-in 10:30 AM, 30 min early). Hawaii Shark Encounters — 66-105 Haleʻiwa Rd, Haleʻiwa, HI 96712.',
+          when: '✓ Confirmed · Check-in 10:30 AM',
+          defaultChecked: true
         },
         {
           id: 'chk-diamond',
