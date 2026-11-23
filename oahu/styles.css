@@ -263,6 +263,26 @@ a:hover {
   color: var(--accent-lagoon);
 }
 
+.offline-badge {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.offline-badge.is-ready {
+  background: var(--accent-palm-soft);
+  color: var(--accent-palm);
+}
+
+.offline-badge.is-offline {
+  background: var(--accent-amber-soft);
+  color: var(--accent-amber);
+}
+
 .car-mode-pill {
   display: inline-flex;
   align-items: center;

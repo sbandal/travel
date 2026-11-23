@@ -579,6 +579,51 @@
   }
 
   /* ------------------------------------------------------------------------
+     Offline Support (Service Worker + Connection Indicator)
+     ------------------------------------------------------------------------ */
+  function registerOfflineSupport() {
+    const badge = document.getElementById('offline-badge');
+
+    function updateBadge(isReady) {
+      if (!badge) return;
+      if (!navigator.onLine) {
+        badge.textContent = '● Offline Mode';
+        badge.className = 'offline-badge is-offline';
+        badge.hidden = false;
+      } else if (isReady) {
+        badge.textContent = '✓ Offline Ready';
+        badge.className = 'offline-badge is-ready';
+        badge.hidden = false;
+      }
+    }
+
+    window.addEventListener('online', () => updateBadge(true));
+    window.addEventListener('offline', () => updateBadge(true));
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('./sw.js')
+        .then((reg) => {
+          if (reg.active || navigator.serviceWorker.controller) {
+            updateBadge(true);
+          }
+          reg.addEventListener('updatefound', () => {
+            const nw = reg.installing;
+            if (!nw) return;
+            nw.addEventListener('statechange', () => {
+              if (nw.state === 'activated') updateBadge(true);
+            });
+          });
+        })
+        .catch(() => {
+          // Service worker unavailable (e.g. file:// or sandboxed preview)
+        });
+    } else if (!navigator.onLine) {
+      updateBadge(false);
+    }
+  }
+
+  /* ------------------------------------------------------------------------
      Boot
      ------------------------------------------------------------------------ */
   function boot() {
@@ -591,6 +636,7 @@
     renderChecklist();
     initMap();
     renderMap();
+    registerOfflineSupport();
   }
 
   if (document.readyState === 'loading') {

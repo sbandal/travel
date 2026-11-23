@@ -1,0 +1,10 @@
+{
+  "name": "Oʻahu Thanksgiving Week Trip Planner",
+  "short_name": "Oʻahu Trip",
+  "description": "Offline-ready 7-day Oʻahu itinerary, interactive map, local food guide, and booking checklist.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf8f4",
+  "theme_color": "#0d6e6e"
+}

@@ -6,8 +6,12 @@
     <title>Oʻahu Thanksgiving Week · Interactive Trip Planner (Nov 24–30, 2026)</title>
     <meta
       name="description"
-      content="Interactive 7-day Oʻahu vacation planner for Nov 24–30, 2026 staying at Hotel Renew in Waikiki, featuring a color-coded island map, day-by-day itinerary, local food guide, Thanksgiving booking checklist, and car rental vs. parking calculator."
+      content="Interactive 7-day Oʻahu vacation planner for Nov 24–30, 2026 staying at Hotel Renew in Waikiki, featuring a color-coded island map, day-by-day itinerary, local food guide, and Thanksgiving booking checklist."
     />
+    <meta name="theme-color" content="#0d6e6e" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Oʻahu Trip" />
+    <link rel="manifest" href="manifest.json" />
 
     <!-- Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -84,6 +88,7 @@
             <span class="nav-tab-count" id="nav-checklist-count">0/13</span>
           </button>
         </div>
+        <span class="offline-badge" id="offline-badge" hidden></span>
       </div>
     </nav>
 

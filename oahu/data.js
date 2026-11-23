@@ -731,6 +731,12 @@ const TRIP_DATA = {
           when: 'Morning of Tue 11/24'
         },
         {
+          id: 'chk-offline-maps',
+          title: 'Download Oʻahu Offline Map in Google Maps',
+          detail: 'In Google Maps app → Profile → Offline Maps → Select your own map → cover all of Oʻahu (~120 MB). Ensures every Directions ↗ link routes even in dead zones on Windward/North Shore.',
+          when: 'On Wi-Fi before departure'
+        },
+        {
           id: 'chk-usda',
           title: 'HNL USDA Agricultural Inspection on Return',
           detail: 'All luggage leaving Hawaiʻi for the mainland goes through USDA x-ray before airline bag drop (don’t pack fresh fruit!).',
