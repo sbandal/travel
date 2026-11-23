@@ -83,11 +83,25 @@
         scrollWheelZoom: true
       });
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-        subdomains: 'abcd',
+      const osmLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors',
         maxZoom: 19
-      }).addTo(map);
+      });
+
+      const satelliteLayer = L.tileLayer(
+        'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        {
+          attribution: 'Tiles &copy; Esri',
+          maxZoom: 19
+        }
+      );
+
+      osmLayer.addTo(map);
+      L.control
+        .layers({ 'Street Map': osmLayer, Satellite: satelliteLayer }, null, {
+          position: 'topright'
+        })
+        .addTo(map);
 
       routesLayer = L.layerGroup().addTo(map);
       markersLayer = L.layerGroup().addTo(map);
