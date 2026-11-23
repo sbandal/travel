@@ -588,12 +588,6 @@ const TRIP_DATA = {
           title: 'Thanksgiving Dinner Reservation (Thu 11/26)',
           detail: 'Holiday tables in Waikiki and Kailua fill up fast. Lock in a spot for Thursday evening (~6:45 PM).',
           when: 'Book ASAP'
-        },
-        {
-          id: 'chk-car',
-          title: 'Verify Employer Car Rate ($31.50/day) & Reserve',
-          detail: 'Check if your employer code applies to Waikiki neighborhood branches (for the 3-day Thu–Sat plan) or HNL Airport only. Most rental bookings are free-cancellation!',
-          when: 'Book ASAP — free to adjust later'
         }
       ]
     },

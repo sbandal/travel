@@ -1,11 +1,11 @@
 /* ==========================================================================
-   Oʻahu Trip Planner — Interactive Map, Itinerary, Food, Checklist & Car Tool
+   Oʻahu Trip Planner — Interactive Map, Itinerary, Food Guide & Checklist
    ========================================================================== */
 
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'oahu_trip_2026_state_v1';
+  const STORAGE_KEY = 'oahu_trip_2026_state_v2';
 
   const state = {
     activeTab: 'planner',
@@ -13,8 +13,6 @@
     activeCategory: 'all',
     selectedStopId: null,
     activeFoodFilter: 'all',
-    carStrategy: 'split', // 'split' (3-day Thu-Sat) | 'full' (6-day HNL)
-    parkingChoice: 'banyan', // 'banyan' ($30) | 'hotel' ($63)
     checkedItems: {}
   };
 
@@ -25,6 +23,32 @@
   const markerByStopId = new Map();
 
   /* ------------------------------------------------------------------------
+     Google Maps Universal Direction URLs (Free · Opens Native Maps on Phone)
+     ------------------------------------------------------------------------ */
+  function getDirectionsUrl(lat, lng) {
+    return `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+  }
+
+  function getDayRouteUrl(dayObj) {
+    const hb = TRIP_DATA.homeBase;
+    const stops = dayObj.stops;
+    if (!stops || stops.length === 0) return getDirectionsUrl(hb.lat, hb.lng);
+
+    const origin = dayObj.day === 1 ? `${stops[0].lat},${stops[0].lng}` : `${hb.lat},${hb.lng}`;
+    const last = stops[stops.length - 1];
+    const destination = `${last.lat},${last.lng}`;
+
+    const midStops = dayObj.day === 1 ? stops.slice(1, -1) : stops.slice(0, -1);
+    const waypoints = midStops.map((s) => `${s.lat},${s.lng}`).join('|');
+
+    let url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}`;
+    if (waypoints) {
+      url += `&waypoints=${encodeURIComponent(waypoints)}`;
+    }
+    return url;
+  }
+
+  /* ------------------------------------------------------------------------
      Persistence
      ------------------------------------------------------------------------ */
   function loadState() {
@@ -32,12 +56,6 @@
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return;
       const saved = JSON.parse(raw);
-      if (saved.carStrategy === 'split' || saved.carStrategy === 'full') {
-        state.carStrategy = saved.carStrategy;
-      }
-      if (saved.parkingChoice === 'banyan' || saved.parkingChoice === 'hotel') {
-        state.parkingChoice = saved.parkingChoice;
-      }
       if (saved.checkedItems && typeof saved.checkedItems === 'object') {
         state.checkedItems = saved.checkedItems;
       }
@@ -51,8 +69,6 @@
       localStorage.setItem(
         STORAGE_KEY,
         JSON.stringify({
-          carStrategy: state.carStrategy,
-          parkingChoice: state.parkingChoice,
           checkedItems: state.checkedItems
         })
       );
@@ -71,7 +87,7 @@
         mapEl.innerHTML =
           '<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:28px;text-align:center;color:#4a555e;font-size:14px;">' +
           '<div><strong style="display:block;margin-bottom:6px;color:#1a2126;">Interactive map tiles require network access</strong>' +
-          'Open the live GitHub Pages site to explore the interactive Oʻahu map. All itinerary filters, food guide, checklist, and car calculator controls work right here.</div></div>';
+          'Open the live GitHub Pages site to explore the interactive Oʻahu map. All itinerary filters, Google Maps direction links, food guide, and checklist controls work right here.</div></div>';
       }
       return;
     }
@@ -134,7 +150,8 @@
       .bindPopup(
         `<div class="popup-kicker">Home Base · Waikiki</div>
          <h4 class="popup-title">${hb.name}</h4>
-         <p class="popup-desc">${hb.address}<br>${hb.note}</p>`
+         <p class="popup-desc">${hb.address}</p>
+         <a class="popup-directions" href="${getDirectionsUrl(hb.lat, hb.lng)}" target="_blank" rel="noopener noreferrer">Directions in Google Maps ↗</a>`
       )
       .addTo(markersLayer);
 
@@ -142,7 +159,6 @@
 
     visibleDays.forEach((dayObj) => {
       const routeCoords = [];
-      // Start route from Hotel Renew for days 2–7
       if (dayObj.day >= 2 && dayObj.stops.length > 0) {
         routeCoords.push([hb.lat, hb.lng]);
       }
@@ -167,7 +183,8 @@
           `<div class="popup-kicker">${dayObj.shortLabel} · ${stop.time}</div>
            <h4 class="popup-title">${stop.name}</h4>
            <p class="popup-desc">${stop.description}</p>
-           <div class="popup-meta">${stop.driveFromPrev}${stop.reservationRequired ? ' · ' + stop.reservationRequired : ''}</div>`
+           <div class="popup-meta">${stop.driveFromPrev}${stop.reservationRequired ? ' · ' + stop.reservationRequired : ''}</div>
+           <a class="popup-directions" href="${getDirectionsUrl(stop.lat, stop.lng)}" target="_blank" rel="noopener noreferrer">Directions in Google Maps ↗</a>`
         );
 
         marker.on('click', () => {
@@ -182,8 +199,7 @@
         L.polyline(routeCoords, {
           color: dayObj.color,
           weight: state.activeDay === 'all' ? 2.5 : 3.5,
-          opacity: state.activeDay === 'all' ? 0.5 : 0.82,
-          dashArray: dayObj.carInSplitMode ? null : '6 6'
+          opacity: state.activeDay === 'all' ? 0.5 : 0.82
         }).addTo(routesLayer);
       }
     });
@@ -227,7 +243,8 @@
           `<div class="popup-kicker">${spot.area} · ${spot.price}</div>
            <h4 class="popup-title">${spot.name}</h4>
            <p class="popup-desc"><strong>Order:</strong> ${spot.dish}<br>${spot.notes}</p>
-           <div class="popup-meta">${spot.access}</div>`
+           <div class="popup-meta">${spot.access}</div>
+           <a class="popup-directions" href="${getDirectionsUrl(spot.lat, spot.lng)}" target="_blank" rel="noopener noreferrer">Directions in Google Maps ↗</a>`
         )
         .addTo(foodHighlightLayer);
 
@@ -322,11 +339,6 @@
 
     container.innerHTML = visibleDays
       .map((dayObj) => {
-        const hasCarToday = state.carStrategy === 'full' ? true : dayObj.carInSplitMode;
-        const carBadge = hasCarToday
-          ? `<span class="day-badge-car needs-car">🚗 ${state.carStrategy === 'full' ? 'Rental Car (Full Trip)' : 'Car Day'}</span>`
-          : `<span class="day-badge-car no-car">🚶 No Car Needed</span>`;
-
         const stopsHtml = dayObj.stops
           .map((stop, idx) => {
             const selected = state.selectedStopId === stop.id ? 'is-selected' : '';
@@ -346,6 +358,13 @@
                     <span class="meta-chip">${stop.driveFromPrev}</span>
                     <span class="meta-chip">${stop.duration}</span>
                     ${reserveChip}
+                    <a
+                      class="btn-directions"
+                      href="${getDirectionsUrl(stop.lat, stop.lng)}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onclick="event.stopPropagation();"
+                    >Directions ↗</a>
                   </div>
                   ${stop.tip ? `<p class="stop-tip">${stop.tip}</p>` : ''}
                 </div>
@@ -361,7 +380,12 @@
                   <span class="day-swatch" style="background:${dayObj.color}"></span>
                   DAY ${dayObj.day} · ${dayObj.date.toUpperCase()}
                 </span>
-                ${carBadge}
+                <a
+                  class="day-route-btn"
+                  href="${getDayRouteUrl(dayObj)}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >Day Route in Google Maps ↗</a>
               </div>
               <h3 class="day-title">${dayObj.theme}</h3>
               <p class="day-summary">${dayObj.summary}</p>
@@ -445,7 +469,15 @@
           </div>
           <div class="food-card-footer">
             <span>${spot.access}</span>
-            <button class="btn-link-map" data-food-map="${spot.id}">Show on map</button>
+            <div class="food-actions">
+              <button class="btn-link-map" data-food-map="${spot.id}">Map</button>
+              <a
+                class="btn-directions"
+                href="${getDirectionsUrl(spot.lat, spot.lng)}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Directions ↗</a>
+            </div>
           </div>
         </article>`
       )
@@ -509,81 +541,6 @@
   }
 
   /* ------------------------------------------------------------------------
-     Car & Parking Cost Calculator
-     ------------------------------------------------------------------------ */
-  function renderCarStrategy() {
-    const isSplit = state.carStrategy === 'split';
-    const isBanyan = state.parkingChoice === 'banyan';
-
-    document.getElementById('strat-split').classList.toggle('is-selected', isSplit);
-    document.getElementById('strat-full').classList.toggle('is-selected', !isSplit);
-    document.getElementById('park-banyan').classList.toggle('is-selected', isBanyan);
-    document.getElementById('park-hotel').classList.toggle('is-selected', !isBanyan);
-
-    const carDays = isSplit ? 3 : 6;
-    const parkingNights = isSplit ? 2 : 6; // Thu & Fri nights if returning Sat evening
-    const dailyCarRate = 31.5;
-    const carSubtotal = carDays * dailyCarRate;
-    const estCarTaxes = Math.round(carSubtotal * 0.24); // Hawaii rental taxes & fees estimate
-    const nightlyParking = isBanyan ? 30 : 63; // Banyan ~$30 vs Hotel Renew $60 + tax (~$63)
-    const parkingTotal = parkingNights * nightlyParking;
-    const airportUbers = isSplit ? 80 : 0; // ~$40 each way
-    const localUbers = isSplit ? 45 : 0; // Diamond Head / Pearl Harbor / Kaka'ako short rides
-    const gasEst = isSplit ? 30 : 40;
-
-    const grandTotal = Math.round(carSubtotal + estCarTaxes + parkingTotal + airportUbers + localUbers + gasEst);
-
-    // Baseline comparison: Full 6 days + Hotel Renew Valet
-    const fullHotelTotal = Math.round(6 * 31.5 * 1.24 + 6 * 63 + 40);
-    const savings = fullHotelTotal - grandTotal;
-
-    document.getElementById('cost-mode-subtitle').textContent = `${
-      isSplit ? '3-Day Mid-Trip Rental (Thu–Sat)' : '6-Day Full-Trip Rental (HNL)'
-    } · ${isBanyan ? 'Waikiki Banyan Parking' : 'Hotel Renew Valet'}`;
-
-    document.getElementById('cost-rows').innerHTML = `
-      <div class="cost-row">
-        <span class="cost-row-label">Car rental (${carDays} days × $31.50 employer rate)</span>
-        <span class="cost-row-val">$${carSubtotal.toFixed(2)}</span>
-      </div>
-      <div class="cost-row">
-        <span class="cost-row-label">Est. Hawaiʻi rental taxes & fees (~24%)</span>
-        <span class="cost-row-val">~$${estCarTaxes}</span>
-      </div>
-      <div class="cost-row">
-        <span class="cost-row-label">Overnight parking (${parkingNights} nights × $${nightlyParking})</span>
-        <span class="cost-row-val">$${parkingTotal}</span>
-      </div>
-      <div class="cost-row">
-        <span class="cost-row-label">Airport Ubers (HNL ↔ Hotel Renew)</span>
-        <span class="cost-row-val">${airportUbers ? '~$' + airportUbers : '$0'}</span>
-      </div>
-      <div class="cost-row">
-        <span class="cost-row-label">Local Waikiki / Pearl Harbor Ubers</span>
-        <span class="cost-row-val">${localUbers ? '~$' + localUbers : '$0'}</span>
-      </div>
-      <div class="cost-row">
-        <span class="cost-row-label">Estimated gas</span>
-        <span class="cost-row-val">~$${gasEst}</span>
-      </div>
-    `;
-
-    document.getElementById('cost-total-val').textContent = `~$${grandTotal}`;
-
-    const savingsBox = document.getElementById('savings-callout');
-    if (savings > 0) {
-      savingsBox.textContent = `Saves ~$${savings} compared to keeping a car all 6 nights at Hotel Renew valet (~$${fullHotelTotal}), while still covering East Shore, PCC, and North Shore comfortably.`;
-    } else {
-      savingsBox.textContent = `Maximum door-to-door convenience with valet at Hotel Renew. Switching parking to Waikiki Banyan (3-min walk) saves ~$198 on a 6-night stay.`;
-    }
-
-    // Update top nav pill
-    document.getElementById('car-mode-pill-label').textContent = isSplit
-      ? 'Car: 3-Day Split (Thu–Sat)'
-      : 'Car: Full 6 Days (HNL)';
-  }
-
-  /* ------------------------------------------------------------------------
      Tab Navigation & Wiring
      ------------------------------------------------------------------------ */
   function switchTab(tabId) {
@@ -605,10 +562,6 @@
       btn.addEventListener('click', () => switchTab(btn.dataset.tab));
     });
 
-    document.getElementById('car-mode-pill').addEventListener('click', () => {
-      switchTab('car');
-    });
-
     document.getElementById('map-reset-btn').addEventListener('click', () => {
       state.activeDay = 'all';
       state.activeCategory = 'all';
@@ -617,32 +570,6 @@
       renderCategoryPills();
       renderItinerary();
       renderMap();
-    });
-
-    document.getElementById('strat-split').addEventListener('click', () => {
-      state.carStrategy = 'split';
-      saveState();
-      renderCarStrategy();
-      renderItinerary();
-    });
-
-    document.getElementById('strat-full').addEventListener('click', () => {
-      state.carStrategy = 'full';
-      saveState();
-      renderCarStrategy();
-      renderItinerary();
-    });
-
-    document.getElementById('park-banyan').addEventListener('click', () => {
-      state.parkingChoice = 'banyan';
-      saveState();
-      renderCarStrategy();
-    });
-
-    document.getElementById('park-hotel').addEventListener('click', () => {
-      state.parkingChoice = 'hotel';
-      saveState();
-      renderCarStrategy();
     });
 
     document.getElementById('checklist-reset-btn').addEventListener('click', () => {
@@ -663,7 +590,6 @@
     renderItinerary();
     renderFoodGuide();
     renderChecklist();
-    renderCarStrategy();
     initMap();
     renderMap();
   }

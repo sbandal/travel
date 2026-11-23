@@ -879,6 +879,70 @@ a:hover {
   background: #d3e9e9;
 }
 
+.food-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.btn-directions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-lagoon);
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: background-color 0.16s var(--ease);
+}
+
+.btn-directions:hover {
+  background: var(--accent-lagoon-hover);
+}
+
+.day-route-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 11px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(13, 110, 110, 0.25);
+  background: var(--accent-lagoon-soft);
+  color: var(--accent-lagoon) !important;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: background-color 0.16s var(--ease);
+}
+
+.day-route-btn:hover {
+  background: #d3e9e9;
+}
+
+.popup-directions {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 9px;
+  padding: 5px 11px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-lagoon);
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+.popup-directions:hover {
+  background: var(--accent-lagoon-hover);
+}
+
 /* ==========================================================================
    Bookings & Checklist
    ========================================================================== */
