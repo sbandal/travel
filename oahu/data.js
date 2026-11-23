@@ -8,15 +8,7 @@ const TRIP_DATA = {
     address: '129 Paoakalani Ave, Honolulu, HI 96815',
     lat: 21.2736,
     lng: -157.8226,
-    note: '1 block from Waikiki Beach (Diamond Head / Honolulu Zoo end). Valet parking is $60 + tax/night.'
-  },
-
-  waikikiBanyan: {
-    name: 'Waikiki Banyan Parking Garage',
-    address: '201 ʻŌhua Ave, Honolulu, HI 96815',
-    lat: 21.2747,
-    lng: -157.8235,
-    note: '~3-min walk from Hotel Renew. ~$25–$30/day overnight with in/out privileges.'
+    note: '1 block from Waikiki Beach (Diamond Head / Honolulu Zoo end).'
   },
 
   days: [
@@ -24,35 +16,47 @@ const TRIP_DATA = {
       day: 1,
       date: 'Tue, Nov 24',
       shortLabel: 'Day 1 · 11/24',
-      theme: 'Arrival & Waikiki Check-In',
+      theme: 'Drive to SFO, Flight to HNL & Waikiki Check-In',
       color: '#3b6e8c',
-      carInSplitMode: false,
-      summary: 'Land on Southwest WN3882 late evening, head straight to Hotel Renew, and settle in for the week.',
-      holidayNote: 'Reminder: Set an alarm for 7:00 AM HST today (or Mon 11/23 depending on your target day) if you want Hanauma Bay snorkeling reservations for Thanksgiving Day (Thu 11/26)!',
+      summary: 'Drive to SFO for Southwest WN3882, land at HNL in the evening, head to Hotel Renew, and settle in for the week.',
+      holidayNote: 'Morning reminder: Book Hanauma Bay snorkeling for Thanksgiving Day (Thu 11/26) right at 7:00 AM HST (9:00 AM PST) today — slots sell out in ~5 minutes!',
       stops: [
         {
+          id: 'd1-sfo',
+          name: 'Drive to San Francisco Intl Airport (SFO)',
+          time: 'Afternoon PST',
+          category: 'transit',
+          lat: 37.6213,
+          lng: -122.3790,
+          offIsland: true,
+          duration: 'Airport',
+          driveFromPrev: 'Departure · WN3882',
+          description: 'Drive to SFO, park/drop off, and clear security for Southwest WN3882 (SFO → HNL). Allow extra holiday-week buffer for Thanksgiving Tuesday airport traffic.',
+          tip: 'Check in 24 hours prior on Mon 11/23 and confirm your exact terminal & gate in the Southwest app.'
+        },
+        {
           id: 'd1-hnl',
-          name: 'Daniel K. Inouye Intl Airport (HNL)',
-          time: '~9:10 PM HST',
+          name: 'Arrive Honolulu Intl Airport (HNL)',
+          time: 'Evening HST',
           category: 'transit',
           lat: 21.3187,
           lng: -157.9225,
           duration: '30 min',
-          driveFromPrev: 'Arrival · WN3882',
-          description: 'Arrive on Southwest WN3882 (SJC → HNL). Grab bags and head to rideshare pickup (or Rental Car Center if doing the 6-day car plan).',
-          tip: 'Uber/Lyft to Hotel Renew is ~$35–$45 and takes ~20–25 min at night.'
+          driveFromPrev: 'Flight WN3882 (SFO → HNL)',
+          description: 'Land at Daniel K. Inouye Intl Airport (HNL), grab bags, and head to Waikiki.',
+          tip: 'HNL to Hotel Renew takes ~20–25 min in the evening.'
         },
         {
           id: 'd1-hotel',
           name: 'Hotel Renew Check-In & Waikiki Stroll',
-          time: '~9:50 PM',
+          time: 'Late Evening',
           category: 'beach',
           lat: 21.2736,
           lng: -157.8226,
           duration: 'Evening',
           driveFromPrev: '25 min from HNL',
-          description: 'Check in at Hotel Renew (129 Paoakalani Ave). Take a quick 2-minute walk down to Kuhio Beach for warm Pacific air and grab a late-night musubi from ABC Store or Musubi Cafe Iyasume.',
-          tip: 'Get to sleep early — the 2-hour time difference from California makes tomorrow’s sunrise Diamond Head hike effortless.'
+          description: 'Check in at Hotel Renew (129 Paoakalani Ave). Take a quick 2-minute walk down to Kuhio Beach for warm Pacific air and grab a late-night snack (salmon/tuna/avocado musubi or fresh fruit) from ABC Store or Musubi Cafe Iyasume.',
+          tip: 'Unpack and get a good night’s rest before tomorrow’s relaxed 9:30 AM start at Diamond Head.'
         }
       ]
     },
@@ -297,7 +301,7 @@ const TRIP_DATA = {
           duration: '2.5 hrs',
           driveFromPrev: '15 min south',
           description: 'Spot basking green sea turtles at Laniakea Beach right before sunset, then stroll surf boutiques, grab Matsumoto Shave Ice (closes ~6 PM), and have a relaxed North Shore dinner before driving back to Waikiki.',
-          tip: 'Drive back ~8:30–9:30 PM. If doing the 3-day car split, check if your Waikiki branch has an after-hours key drop or return Sunday morning.'
+          tip: 'Drive back to Waikiki ~8:30–9:30 PM after dinner (~50 min via H-2).'
         }
       ]
     },
@@ -429,7 +433,7 @@ const TRIP_DATA = {
           lng: -157.9225,
           duration: 'Airport',
           driveFromPrev: '25–30 min Uber from Waikiki (depart ~12:45 PM)',
-          description: 'Check in at HNL Terminal 2 (remember to pass checked bags through the USDA Agricultural Inspection scanner before dropping them!). Fly home to OAK.',
+          description: 'Check in at HNL Terminal 2 (remember to pass checked bags through the USDA Agricultural Inspection scanner before dropping them!) for your Southwest WN2026 flight home.',
           tip: 'Aloha & safe travels!'
         }
       ]
@@ -640,7 +644,7 @@ const TRIP_DATA = {
         {
           id: 'chk-pcc',
           title: 'Polynesian Cultural Center Tickets',
-          detail: 'Book for Fri 11/27 (or Wed 11/25 / Sat 11/28). Closed Thu 11/26 & Sun 11/29. Choose Villages + Aliʻi Lūʻau + Hā evening show.',
+          detail: 'Book for Fri 11/27 (closed Thu 11/26 & Sun 11/29). Choose Villages + Aliʻi Lūʻau + Hā evening show.',
           when: 'Book ASAP — holiday week sells out'
         },
         {
@@ -658,7 +662,7 @@ const TRIP_DATA = {
         {
           id: 'chk-thanksgiving',
           title: 'Thanksgiving Dinner Reservation (Thu 11/26)',
-          detail: 'Holiday tables in Waikiki and Kailua fill up fast. Lock in a spot for Thursday evening (~6:45 PM).',
+          detail: 'Holiday tables in Waikiki/Honolulu fill up fast. Lock in a spot for Thursday evening (~7:30–8:00 PM after Koko Crater sunset).',
           when: 'Book ASAP'
         }
       ]
@@ -672,7 +676,7 @@ const TRIP_DATA = {
           id: 'chk-hanauma',
           title: 'Hanauma Bay Snorkeling Reservation (10:00 AM slot)',
           detail: 'Opens strictly 2 days ahead at 7:00 AM HST (9:00 AM PST) on pros.hnl.info ($25/person). Sells out in ~5 minutes!',
-          when: 'Alarm: Tue 11/24 at 7:00 AM HST for Thu 11/26'
+          when: 'Alarm: Tue 11/24 at 7:00 AM HST (9:00 AM PST) for Thu 11/26'
         },
         {
           id: 'chk-pearl',
@@ -701,8 +705,8 @@ const TRIP_DATA = {
         },
         {
           id: 'chk-gear',
-          title: 'Sneakers, Swimwear, Sunglasses & Light Rain Shell',
-          detail: 'Grippy shoes for Diamond Head / Pillbox, water shoes or snorkel mask if you own one, and a light layer for windy Pali Lookout.',
+          title: 'Grippy Shoes, Swimwear, Headlamp & Light Rain Shell',
+          detail: 'Sneakers for Diamond Head / Koko Crater / Pillbox, a small headlamp or charged phone flashlight for Koko Crater dusk descent, and a light layer for windy Pali Lookout.',
           when: 'Before departure'
         },
         {
@@ -721,13 +725,13 @@ const TRIP_DATA = {
         {
           id: 'chk-checkin',
           title: 'Southwest Check-In (24 Hours Prior)',
-          detail: 'Check in Mon 11/23 (~5:35 PM PST) for WN3882 and Sun 11/29 (~3:15 PM HST) for WN2026.',
+          detail: 'Check in 24 hours before your SFO departure on Mon 11/23 for WN3882, and Sun 11/29 (~3:15 PM HST) for WN2026.',
           when: '24 hrs before each flight'
         },
         {
           id: 'chk-hotel-note',
-          title: 'Confirm Hotel Renew Late Check-In',
-          detail: 'Since WN3882 lands around 9:10 PM HST, give Hotel Renew a quick heads-up that you’re arriving ~10 PM.',
+          title: 'Confirm Hotel Renew Evening Check-In',
+          detail: 'Give Hotel Renew a quick heads-up on Tue 11/24 about your evening arrival time so your room is held smoothly.',
           when: 'Morning of Tue 11/24'
         },
         {

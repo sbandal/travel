@@ -31,8 +31,8 @@
 
   function getDayRouteUrl(dayObj) {
     const hb = TRIP_DATA.homeBase;
-    const stops = dayObj.stops;
-    if (!stops || stops.length === 0) return getDirectionsUrl(hb.lat, hb.lng);
+    const stops = (dayObj.stops || []).filter((s) => !s.offIsland);
+    if (stops.length === 0) return getDirectionsUrl(hb.lat, hb.lng);
 
     const origin = dayObj.day === 1 ? `${stops[0].lat},${stops[0].lng}` : `${hb.lat},${hb.lng}`;
     const last = stops[stops.length - 1];
@@ -164,6 +164,7 @@
       }
 
       dayObj.stops.forEach((stop, idx) => {
+        if (stop.offIsland) return;
         routeCoords.push([stop.lat, stop.lng]);
         bounds.push([stop.lat, stop.lng]);
 
