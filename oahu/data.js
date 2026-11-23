@@ -179,7 +179,7 @@ const TRIP_DATA = {
       color: '#7c4d8a',
       carInSplitMode: true,
       summary: '9:30 AM scenic Windward drive (Pali Lookout, Byodo-In Temple, Kualoa), followed by a full afternoon & evening at the Polynesian Cultural Center.',
-      holidayNote: 'Polynesian Cultural Center is OPEN today (12:00 PM – 9:00 PM). Book your package (villages + Aliʻi Lūʻau + Hā: Breath of Life show) in advance.',
+      holidayNote: 'Confirmed Booking (2 Adults · Aliʻi Lūʻau Package): Islands of Polynesia → Aliʻi Lūʻau at Hale ʻOhana (4:30 PM) → Hā: Breath of Life at Pacific Theater (7:15 PM, Lower Section 4, Seats J-81 & J-82).',
       stops: [
         {
           id: 'd4-pali',
@@ -215,7 +215,7 @@ const TRIP_DATA = {
           duration: '45 min',
           driveFromPrev: '15 min coastal drive',
           description: 'Stop at Kualoa Regional Park for dramatic views of Mokoliʻi Island (Chinaman’s Hat) and the Jurassic-Park mountain ridges across the highway.',
-          tip: 'Grab a quick lunch at Hukilau Marketplace right outside PCC before entering the villages.'
+          tip: 'Grab a quick snack at Hukilau Marketplace right outside PCC before entering the villages (save appetite for the 4:30 PM lūʻau!).'
         },
         {
           id: 'd4-pcc',
@@ -226,9 +226,9 @@ const TRIP_DATA = {
           lng: -157.9218,
           duration: '8 hrs',
           driveFromPrev: '25 min north along Kamehameha Hwy',
-          description: 'Explore 6 authentic Polynesian island villages (Hawaiʻi, Tahiti, Samoa, Tonga, Fiji, Aotearoa), watch the Canoe Pageant, feast at the Aliʻi Lūʻau, and finish with the fire-knife evening show Hā: Breath of Life.',
-          reservationRequired: 'Book PCC package online',
-          tip: '~1 hr drive back to Waikiki after the 9 PM finale (back around 10:15 PM; late-night spots in Waikiki stay open past 11 PM).'
+          description: 'Explore the 6 Islands of Polynesia villages & Canoe Pageant, then head to the Aliʻi Lūʻau at Hale ʻOhana (4:30 PM HST) followed by Hā: Breath of Life at Pacific Theater (7:15 PM HST · Lower Section 4, Seats J-81 & J-82).',
+          reservationRequired: '✓ Booked · 2 Adults (Seats J-81, J-82)',
+          tip: 'Arrive at Hale ʻOhana ~15 min before 4:30 PM and head to Pacific Theater Lower Section 4 around 6:50 PM. ~1 hr drive back to Waikiki after the show.'
         }
       ]
     },
@@ -643,9 +643,10 @@ const TRIP_DATA = {
       items: [
         {
           id: 'chk-pcc',
-          title: 'Polynesian Cultural Center Tickets',
-          detail: 'Book for Fri 11/27 (closed Thu 11/26 & Sun 11/29). Choose Villages + Aliʻi Lūʻau + Hā evening show.',
-          when: 'Book ASAP — holiday week sells out'
+          title: 'Polynesian Cultural Center Tickets (Booked)',
+          detail: 'Fri 11/27 · 2 Adults (Aliʻi Lūʻau Package · $197.95 ea). Villages → Aliʻi Lūʻau at Hale ʻOhana (4:30 PM) → Hā: Breath of Life at Pacific Theater (7:15 PM, Lower Section 4, Seats J-81 & J-82).',
+          when: '✓ Confirmed',
+          defaultChecked: true
         },
         {
           id: 'chk-shark',

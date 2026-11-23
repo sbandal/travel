@@ -52,12 +52,21 @@
      Persistence
      ------------------------------------------------------------------------ */
   function loadState() {
+    // Pre-check any items marked as already confirmed in TRIP_DATA
+    TRIP_DATA.checklistGroups.forEach((group) => {
+      group.items.forEach((item) => {
+        if (item.defaultChecked) {
+          state.checkedItems[item.id] = true;
+        }
+      });
+    });
+
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return;
       const saved = JSON.parse(raw);
       if (saved.checkedItems && typeof saved.checkedItems === 'object') {
-        state.checkedItems = saved.checkedItems;
+        state.checkedItems = { ...state.checkedItems, ...saved.checkedItems };
       }
     } catch (_) {
       // Ignore storage errors
