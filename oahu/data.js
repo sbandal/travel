@@ -179,7 +179,7 @@ const TRIP_DATA = {
       color: '#7c4d8a',
       carInSplitMode: true,
       summary: '9:30 AM scenic Windward drive (Pali Lookout, Byodo-In Temple, Kualoa), followed by a full afternoon & evening at the Polynesian Cultural Center.',
-      holidayNote: 'Confirmed Booking (2 Adults · Aliʻi Lūʻau Package): Islands of Polynesia → Aliʻi Lūʻau at Hale ʻOhana (4:30 PM) → Hā: Breath of Life at Pacific Theater (7:15 PM, Lower Section 4, Seats J-81 & J-82).',
+      holidayNote: 'Confirmed Booking (2 Adults · Aliʻi Lūʻau + Gold Seating): Arrive at Islands of Polynesia entrance by 12:15 PM (Huki Canoe Show 1:00 PM) → Aliʻi Lūʻau at Hale ʻOhana (doors 4:30 PM, 4:55–6:05 PM) → HĀ: Breath of Life at Pacific Theater (gates 6:50 PM, 7:15–8:35 PM · Lower Sec 4, Seats J-81 & J-82).',
       stops: [
         {
           id: 'd4-pali',
@@ -188,7 +188,7 @@ const TRIP_DATA = {
           category: 'hike',
           lat: 21.3669,
           lng: -157.7931,
-          duration: '25 min',
+          duration: '20 min',
           driveFromPrev: '20 min from Waikiki (9:30 AM depart)',
           description: 'Sweeping, windswept cliff overlook of the lush Koʻolau Mountains and Windward coast — site of King Kamehameha I’s pivotal 1795 battle.',
           tip: 'Parking is $7 (non-residents) via kiosk; hold onto your hat!'
@@ -196,11 +196,11 @@ const TRIP_DATA = {
         {
           id: 'd4-byodoin',
           name: 'Byodo-In Temple (Valley of the Temples)',
-          time: '10:30 AM',
+          time: '10:25 AM',
           category: 'culture',
           lat: 21.4309,
           lng: -157.8321,
-          duration: '45 min',
+          duration: '35 min',
           driveFromPrev: '15 min drive',
           description: 'Serene Japanese replica temple tucked beneath sheer emerald Koʻolau cliffs, complete with koi ponds, black swans, and a sacred brass bell.',
           tip: 'Entry ~$5–$7. Open daily 8:30 AM – 4:30 PM.'
@@ -208,27 +208,53 @@ const TRIP_DATA = {
         {
           id: 'd4-kualoa',
           name: 'Kualoa Regional Park & Chinaman’s Hat',
-          time: '11:30 AM',
+          time: '11:15 AM',
           category: 'beach',
           lat: 21.5125,
           lng: -157.8364,
-          duration: '45 min',
+          duration: '30 min',
           driveFromPrev: '15 min coastal drive',
           description: 'Stop at Kualoa Regional Park for dramatic views of Mokoliʻi Island (Chinaman’s Hat) and the Jurassic-Park mountain ridges across the highway.',
-          tip: 'Grab a quick snack at Hukilau Marketplace right outside PCC before entering the villages (save appetite for the 4:30 PM lūʻau!).'
+          tip: 'Head out by ~11:45 AM to reach PCC right by the 12:15 PM first tour.'
         },
         {
-          id: 'd4-pcc',
-          name: 'Polynesian Cultural Center (Lāʻie)',
-          time: '12:45 PM – 9:00 PM',
+          id: 'd4-pcc-villages',
+          name: 'PCC 1/3: Islands of Polynesia & Huki Canoe Show',
+          time: '12:15 PM – 4:30 PM',
           category: 'culture',
           lat: 21.6391,
           lng: -157.9218,
-          duration: '8 hrs',
+          duration: '4 hrs 15 min',
           driveFromPrev: '25 min north along Kamehameha Hwy',
-          description: 'Explore the 6 Islands of Polynesia villages & Canoe Pageant, then head to the Aliʻi Lūʻau at Hale ʻOhana (4:30 PM HST) followed by Hā: Breath of Life at Pacific Theater (7:15 PM HST · Lower Section 4, Seats J-81 & J-82).',
-          reservationRequired: '✓ Booked · 2 Adults (Seats J-81, J-82)',
-          tip: 'Arrive at Hale ʻOhana ~15 min before 4:30 PM and head to Pacific Theater Lower Section 4 around 6:50 PM. ~1 hr drive back to Waikiki after the show.'
+          description: 'Check in at the Islands of Polynesia entrance to meet your guide (tours depart every 15 min from 12:15–2:00 PM). Includes all 6 island villages, Huki Canoe Show at 1:00 PM, canoe tour, hands-on activities, Hawaiian Journey movie, Lāʻie & Temple Visitors Center tour, free pre-selected digital video, and a free 3-day pass.',
+          reservationRequired: '✓ Booked · 2 Adults (Arrive by 12:15 PM)',
+          tip: 'Open 12:00–5:30 PM; guided tours conclude by 5:00 PM for dinner. Call 800-367-7060 ahead if you want a language-specific guide.'
+        },
+        {
+          id: 'd4-pcc-luau',
+          name: 'PCC 2/3: Aliʻi Lūʻau at Hale ʻOhana',
+          time: '4:30 PM – 6:05 PM',
+          category: 'food',
+          lat: 21.6386,
+          lng: -157.9209,
+          duration: '1 hr 35 min',
+          driveFromPrev: 'Inside PCC (Hale ʻOhana)',
+          description: 'Doors open at 4:30 PM; Royal Hawaiian Celebration runs 4:55–6:05 PM. Includes a fresh orchid flower lei greeting, complimentary smoothie, royal court procession, imu presentation, traditional island dishes, and live performances in a garden setting.',
+          reservationRequired: '✓ Booked · Aliʻi Lūʻau (Doors 4:30 PM)',
+          tip: 'Between 6:05 PM and 6:50 PM, browse Hukilau Marketplace before heading to Pacific Theater.'
+        },
+        {
+          id: 'd4-pcc-ha',
+          name: 'PCC 3/3: HĀ: Breath of Life Evening Show',
+          time: '6:50 PM – 8:35 PM',
+          category: 'culture',
+          lat: 21.6378,
+          lng: -157.9225,
+          duration: '1 hr 45 min',
+          driveFromPrev: 'Pacific Theater at Hukilau Marketplace',
+          description: 'Polynesian fire-knife & dance finale at Pacific Theater. Gates open at 6:50 PM; showtime is 7:15–8:35 PM.',
+          reservationRequired: '✓ Gold Level · Lower Sec 4, Seats J-81 & J-82',
+          tip: '~1 hr drive back to Waikiki after the 8:35 PM finale (back at Hotel Renew around ~9:45 PM).'
         }
       ]
     },
