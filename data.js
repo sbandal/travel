@@ -109,11 +109,11 @@ const TRIP_DATA = {
       day: 3,
       date: 'Thu, Nov 26 · Thanksgiving',
       shortLabel: 'Day 3 · 11/26',
-      theme: 'East Shore Snorkeling, Coastal Drive & Lanikai',
+      theme: 'East Shore Snorkeling, Makapuʻu & Koko Crater Sunset',
       color: '#c85a32',
       carInSplitMode: true,
-      summary: '9:30 AM car pickup and scenic southeast coast loop: Hanauma Bay snorkeling, cliffside lighthouse hike, Lanikai Beach, and Thanksgiving dinner.',
-      holidayNote: 'Thanksgiving Day: Polynesian Cultural Center and Pearl Harbor are CLOSED today, making this the ideal outdoor & scenic driving day. Reserve Thanksgiving dinner early!',
+      summary: '9:30 AM scenic southeast coast loop: Hanauma Bay snorkeling, cliffside Makapuʻu Lighthouse Trail, Koko Crater Stairs for sunset, and Thanksgiving dinner.',
+      holidayNote: 'Thanksgiving Day: Hanauma Bay, Makapuʻu, and Koko Crater are all OPEN today (PCC & Hoʻomaluhia are closed Thursdays). Bring a headlamp/phone flashlight for walking down Koko Crater at dusk!',
       stops: [
         {
           id: 'd3-hanauma',
@@ -126,7 +126,7 @@ const TRIP_DATA = {
           driveFromPrev: '25 min drive from Waikiki (9:30 AM depart)',
           description: 'Protected marine sanctuary inside a flooded volcanic crater teeming with tropical reef fish and sea turtles. Snorkel gear can be rented on-site.',
           reservationRequired: 'Book Tue 11/24 at 7:00 AM HST ($25 · 10 AM slot)',
-          tip: 'Last entry is 1:30 PM. Bring $3 cash for parking and reef-safe sunscreen. If reservations sell out, stop at the lookout and spend extra time at Lanikai!'
+          tip: 'Last entry is 1:30 PM. Bring $3 cash for parking and reef-safe sunscreen. If reservations sell out, stop at the lookout and head to Sandy Beach / Makapuʻu!'
         },
         {
           id: 'd3-blowhole',
@@ -138,32 +138,32 @@ const TRIP_DATA = {
           duration: '1.5 hrs',
           driveFromPrev: '15 min scenic drive',
           description: 'Drive Kalanianaʻole Hwy past Halona Blowhole and Sandy Beach to the paved 2-mile Makapuʻu Lighthouse Trail for dramatic cliffside ocean views (early whale-spotting season!).',
-          tip: 'Fully paved, windy, and exposed — wear a hat and sunglasses.'
+          tip: 'Fully paved, windy, and exposed — wear a hat and sunglasses. Grab a quick rest/snack at Koko Marina Center afterward.'
         },
         {
-          id: 'd3-lanikai',
-          name: 'Lanikai Beach & Pillbox Hike (Kailua)',
-          time: '3:15 PM',
-          category: 'beach',
-          lat: 21.3924,
-          lng: -157.7152,
-          duration: '2.5 hrs',
-          driveFromPrev: '25 min drive north',
-          description: 'Powdery white sand and calm turquoise water overlooking the Mokulua Islands, plus the optional 1-hour Lanikai Pillbox hike for golden-hour coastal views.',
-          tip: 'Street parking in Lanikai is tight on holidays — park at Kailua Beach Park and walk 10 min.'
+          id: 'd3-kokocrater',
+          name: 'Koko Crater Railway Trail (Stairs) — Sunset',
+          time: '4:15 PM – 6:30 PM',
+          category: 'hike',
+          lat: 21.2806,
+          lng: -157.6844,
+          duration: '1.5–2 hrs',
+          driveFromPrev: '12 min back toward Hawaii Kai',
+          description: 'Climb 1,048 historic railroad-tie steps straight up Koko Crater (~1.8 mi RT, ~1,000 ft gain) to reach the summit right around ~5:50 PM sunset with sweeping views over Hanauma Bay, Diamond Head, and Waikiki.',
+          tip: 'Bring plenty of water, grippy shoes, and a headlamp or phone flashlight for the descent at dusk.'
         },
         {
           id: 'd3-dinner',
-          name: 'Thanksgiving Dinner (Kailua or Waikiki)',
-          time: '6:45 PM – 10:00 PM',
+          name: 'Thanksgiving Dinner (Waikiki / Honolulu)',
+          time: '7:30 PM – 10:00 PM',
           category: 'food',
-          lat: 21.3972,
-          lng: -157.7418,
+          lat: 21.2768,
+          lng: -157.8286,
           duration: '2 hrs+',
-          driveFromPrev: '10 min to Kailua Town',
-          description: 'Enjoy a reserved Thanksgiving meal in Kailua (Buzz’s / Uahi Island Grill) or drive back over the Pali Hwy for a Waikiki holiday dinner and late-night stroll.',
+          driveFromPrev: '25 min drive back to Waikiki',
+          description: 'Celebrate with a well-earned reserved Thanksgiving dinner back in Waikiki or Honolulu after conquering Koko Crater.',
           reservationRequired: 'Reserve ASAP for 11/26',
-          tip: 'Overnight parking tonight: Waikiki Banyan (~$30) is a 3-min walk from Hotel Renew.'
+          tip: 'Shower/freshen up at Hotel Renew first if your dinner reservation is around 8:00 PM.'
         }
       ]
     },
@@ -305,46 +305,70 @@ const TRIP_DATA = {
       day: 6,
       date: 'Sun, Nov 29',
       shortLabel: 'Day 6 · 11/29',
-      theme: 'Honolulu Culture, Kakaʻako Murals & Farewell Sunset',
+      theme: 'Hoʻomaluhia Garden, Lanikai, Kakaʻako & Farewell Sunset',
       color: '#b06c19',
-      carInSplitMode: false,
-      summary: 'Leisurely 10:00 AM start in urban Honolulu: ʻIolani Palace grounds, Kakaʻako street art & food hall, Magic Island sunset, and a late Waikiki farewell night.',
-      holidayNote: 'No car needed today — short Ubers between Waikiki, Downtown, and Kakaʻako. Pearl Harbor has been moved to Day 7 as an optional flex stop.',
+      carInSplitMode: true,
+      summary: '9:30 AM drive over the Pali to Hoʻomaluhia Botanical Garden and Lanikai Beach & Pillbox, then return to Honolulu for ʻIolani Palace, Kakaʻako murals, and Ala Moana sunset.',
+      holidayNote: 'Hoʻomaluhia Botanical Garden is OPEN Sundays 9:00 AM – 4:00 PM (free admission; closed Thursdays). Pearl Harbor remains on Day 7 as an optional flex stop.',
       stops: [
+        {
+          id: 'd6-hoomaluhia',
+          name: 'Hoʻomaluhia Botanical Garden (Kāneʻohe)',
+          time: '9:55 AM',
+          category: 'hike',
+          lat: 21.3879,
+          lng: -157.8075,
+          duration: '1 hr',
+          driveFromPrev: '25 min from Waikiki via Pali Hwy (9:30 AM depart)',
+          description: '400-acre tropical botanical garden framed by sheer Koʻolau cliffs — drive the iconic palm-lined entrance road and stroll the lush lakeside paths.',
+          tip: 'Free entry (open 9 AM – 4 PM). No stopping on the main entrance road for photos — use the designated pull-outs and parking lots.'
+        },
+        {
+          id: 'd6-lanikai',
+          name: 'Lanikai Beach & Pillbox Hike (Kailua)',
+          time: '11:15 AM',
+          category: 'beach',
+          lat: 21.3924,
+          lng: -157.7152,
+          duration: '2.5 hrs',
+          driveFromPrev: '15 min east to Kailua / Lanikai',
+          description: 'Powdery white sand and calm turquoise water overlooking the Mokulua Islands, plus the scenic 1-hour Lanikai Pillbox ridge hike (and optional lunch in Kailua Town).',
+          tip: 'Park at Kailua Beach Park if Lanikai residential street parking is full (easy 10-min walk).'
+        },
         {
           id: 'd6-iolani',
           name: 'ʻIolani Palace Grounds & Downtown Honolulu',
-          time: '10:00 AM',
+          time: '2:30 PM',
           category: 'culture',
           lat: 21.3068,
           lng: -157.8588,
-          duration: '1.5 hrs',
-          driveFromPrev: '15 min Uber from Waikiki (9:30 AM start)',
-          description: 'See the King Kamehameha Statue and walk the grounds of ʻIolani Palace — the only official royal residence in the United States (note: interior tours are closed Sundays, grounds open for photos), plus a quick Chinatown stroll.',
-          tip: 'Easy walk or 5-min Uber over to Kakaʻako for lunch.'
+          duration: '1 hr',
+          driveFromPrev: '25 min back over Pali Hwy',
+          description: 'See the King Kamehameha Statue and walk the grounds of ʻIolani Palace — the only official royal residence in the United States (note: interior tours are closed Sundays, grounds open for photos).',
+          tip: '5-minute drive over to SALT at Our Kakaʻako right afterward.'
         },
         {
           id: 'd6-kakaako',
           name: 'SALT at Our Kakaʻako & Street Murals',
-          time: '12:00 PM',
+          time: '3:45 PM',
           category: 'food',
           lat: 21.2983,
           lng: -157.8606,
-          duration: '2.5 hrs',
-          driveFromPrev: '5 min Uber / 15 min walk',
-          description: 'Explore Honolulu’s creative neighborhood: colorful POW! WOW! murals, Highway Inn (kalua pork & lau lau) or Moku Kitchen for lunch, and Arvo Café for Aussie-style coffee & toast.',
+          duration: '1.5 hrs',
+          driveFromPrev: '5 min drive',
+          description: 'Explore Honolulu’s creative neighborhood: colorful POW! WOW! murals, Highway Inn or Moku Kitchen, Arvo Café, and local boutiques.',
           tip: 'Great spot for local gifts, craft shops, and Hawaiian coffee beans.'
         },
         {
           id: 'd6-alamoana',
           name: 'Ala Moana Beach Park Sunset & Farewell Dinner',
-          time: '3:30 PM – 10:30 PM',
+          time: '5:15 PM – 10:30 PM',
           category: 'beach',
           lat: 21.2889,
           lng: -157.8484,
-          duration: 'Afternoon & Late Evening',
-          driveFromPrev: '5 min Uber',
-          description: 'Relax at Ala Moana Beach Park and catch your final Oʻahu sunset from Magic Island (classic Diamond Head backdrop), then head back to Waikiki for a farewell dinner and nightcap.',
+          duration: 'Evening',
+          driveFromPrev: '5 min drive',
+          description: 'Catch your final Oʻahu sunset (~5:50 PM) from Magic Island at Ala Moana Beach Park with a classic Diamond Head backdrop, then head back to Waikiki for a farewell dinner and nightcap.',
           tip: 'Try House Without a Key (live Hawaiian music + hula at sunset) or Monkeypod Kitchen Waikiki.'
         }
       ]
