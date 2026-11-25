@@ -3,7 +3,7 @@
    Caches app shell + runtime map tiles for offline island use
    ========================================================================== */
 
-const APP_CACHE = 'oahu-planner-app-v7';
+const APP_CACHE = 'oahu-planner-app-v8';
 const TILE_CACHE = 'oahu-planner-tiles-v1';
 
 const APP_ASSETS = [

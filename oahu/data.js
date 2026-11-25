@@ -56,7 +56,7 @@ const TRIP_DATA = {
           duration: 'Evening',
           driveFromPrev: '25 min from HNL',
           description: 'Check in at Hotel Renew (129 Paoakalani Ave). Take a quick 2-minute walk down to Kuhio Beach for warm Pacific air and grab a late-night snack (salmon/tuna/avocado musubi or fresh fruit) from ABC Store or Musubi Cafe Iyasume.',
-          tip: 'Unpack and get a good night’s rest before tomorrow’s relaxed 9:30 AM start at Diamond Head.'
+          tip: 'Unpack and get a good night’s rest before tomorrow’s relaxed 9:30 AM Waikiki morning.'
         }
       ]
     },
@@ -64,48 +64,60 @@ const TRIP_DATA = {
       day: 2,
       date: 'Wed, Nov 25',
       shortLabel: 'Day 2 · 11/25',
-      theme: 'Diamond Head, Kapahulu Eats & Waikiki Beach',
+      theme: 'Waikiki Beach, Kapahulu Eats & Golden-Hour Diamond Head',
       color: '#0d6e6e',
       carInSplitMode: false,
-      summary: 'Relaxed 9:30 AM start with zero car needed: crater hike, Kapahulu Ave food crawl, Waikiki Beach swim, and evening Kalakaua Ave dining.',
-      holidayNote: 'Everything today is walkable or a 5-min Uber from Hotel Renew — no rental car or parking fees needed.',
+      summary: 'Relaxed 9:30 AM Waikiki beach & coffee morning, Kapahulu Ave food crawl, confirmed 4:00–4:30 PM Diamond Head crater hike, and Waikiki dinner.',
+      holidayNote: 'Confirmed Booking: Diamond Head entry 4:00–4:30 PM (last entry 4:30 PM sharp; park gates lock at 6:00 PM). Everything today is walkable or a 5–8 min Uber from Hotel Renew.',
       stops: [
         {
-          id: 'd2-diamond',
-          name: 'Diamond Head Crater Hike',
-          time: '9:30 AM',
-          category: 'hike',
-          lat: 21.2619,
-          lng: -157.8056,
-          duration: '1.5–2 hrs',
-          driveFromPrev: '8 min Uber / 30 min walk',
-          description: 'Iconic 1.6-mile round-trip summit hike inside a volcanic tuff cone with panoramic 360° views of Waikiki and the south shore.',
-          reservationRequired: 'Book online ($5 entry · 9–10 AM slot)',
-          tip: 'Bring plenty of water, sunscreen, and a hat since the trail gets sunny by late morning.'
+          id: 'd2-waikiki',
+          name: 'Kona Coffee & Waikiki Beach Swim',
+          time: '9:30 AM – 12:30 PM',
+          category: 'beach',
+          lat: 21.2752,
+          lng: -157.8261,
+          duration: '3 hrs',
+          driveFromPrev: '1 block from Hotel Renew',
+          description: 'Start slow with 100% Kona coffee and savory croissants at Kona Coffee Purveyors (or Kai Coffee / Knots nearby), then unwind and swim at Waikiki Beach right outside Hotel Renew.',
+          tip: 'Hotel Renew lends beach chairs and towels — ask the front desk before heading down.'
         },
         {
           id: 'd2-kapahulu',
           name: 'Kapahulu Ave Food Crawl',
-          time: '12:00 PM',
+          time: '12:45 PM – 2:30 PM',
           category: 'food',
           lat: 21.2816,
           lng: -157.8141,
-          duration: '1.5 hrs',
+          duration: '1 hr 45 min',
           driveFromPrev: '6 min Uber / 18 min walk',
-          description: 'Post-hike lunch along Honolulu’s best local food street: fresh ahi poke at Ono Seafood, mahi-mahi or boneless chicken plates at Rainbow Drive-In, and warm semi-sweet malasadas at Leonard’s Bakery.',
-          tip: 'Midday is ideal for Ono Seafood before they sell out of spicy ahi & shoyu poke.'
+          description: 'Lunch along Honolulu’s best local food street: fresh ahi poke at Ono Seafood, mahi-mahi or boneless chicken plates at Rainbow Drive-In, and warm semi-sweet malasadas at Leonard’s Bakery.',
+          tip: 'Head back to Hotel Renew around 2:45 PM to rinse off, rest, and change into sneakers before Diamond Head.'
         },
         {
-          id: 'd2-waikiki',
-          name: 'Waikiki Beach Swim, Sunset & Night Stroll',
-          time: '2:00 PM – 10:30 PM',
-          category: 'beach',
-          lat: 21.2752,
-          lng: -157.8261,
-          duration: 'Afternoon & Evening',
-          driveFromPrev: '1 block from Hotel Renew',
-          description: 'Unwind and swim at Waikiki Beach right outside Hotel Renew, catch the ~5:50 PM sunset, then enjoy dinner (Marugame Udon w/ shrimp & veggie tempura, or fresh island fish at Duke’s / Monkeypod) and evening strolling along Kalakaua Ave.',
-          tip: 'Swing by Kona Coffee Purveyors (International Market Place) in the morning or afternoon for 100% Kona coffee and savory croissants.'
+          id: 'd2-diamond',
+          name: 'Diamond Head Crater Hike (Golden Hour)',
+          time: '4:00 PM – 5:50 PM',
+          category: 'hike',
+          lat: 21.2619,
+          lng: -157.8056,
+          duration: '1.5–1.75 hrs',
+          driveFromPrev: '8 min Uber from Hotel Renew (depart ~3:45 PM)',
+          description: 'Iconic 1.6-mile round-trip summit hike inside a volcanic tuff cone with golden-hour 360° views of Waikiki and the south shore.',
+          reservationRequired: '✓ Booked · 4:00–4:30 PM entry',
+          tip: 'Arrive right at 4:00 PM (last entry is strictly 4:30 PM and gates lock at 6:00 PM!). Bring water and grippy shoes.'
+        },
+        {
+          id: 'd2-evening',
+          name: 'Waikiki Dinner & Kalakaua Ave Night Stroll',
+          time: '6:30 PM – 10:30 PM',
+          category: 'food',
+          lat: 21.2782,
+          lng: -157.8260,
+          duration: 'Evening',
+          driveFromPrev: '8 min Uber back to Waikiki',
+          description: 'Post-hike dinner in Waikiki — Marugame Udon (shrimp, chicken & veggie tempura), or fresh island-caught fish at Duke’s / Monkeypod Kitchen — followed by an evening stroll along Kalakaua Ave & International Market Place.',
+          tip: 'Check out Honolulu Cookie Company or ABC Store on the way back to Hotel Renew.'
         }
       ]
     },
@@ -683,9 +695,10 @@ const TRIP_DATA = {
         },
         {
           id: 'chk-diamond',
-          title: 'Diamond Head State Monument Reservation',
-          detail: 'Reserve entry ($5/person) for Wed 11/25 at 9:00–10:00 AM via gostateparks.hawaii.gov. No parking pass needed if walking/Ubering.',
-          when: 'Book ASAP (up to 30 days ahead)'
+          title: 'Diamond Head State Monument Reservation (Booked)',
+          detail: 'Wed 11/25 · 4:00–4:30 PM entry slot (last entry 4:30 PM; park gates lock strictly at 6:00 PM).',
+          when: '✓ Confirmed · Enter at 4:00 PM',
+          defaultChecked: true
         },
         {
           id: 'chk-thanksgiving',
