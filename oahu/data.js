@@ -128,9 +128,22 @@ const TRIP_DATA = {
       theme: 'East Shore Snorkeling, Makapuʻu & Koko Crater Sunset',
       color: '#c85a32',
       carInSplitMode: true,
-      summary: '9:30 AM scenic southeast coast loop: Hanauma Bay snorkeling, cliffside Makapuʻu Lighthouse Trail, Koko Crater Stairs for sunset, and Thanksgiving dinner.',
-      holidayNote: 'Thanksgiving Day: Hanauma Bay, Makapuʻu, and Koko Crater are all OPEN today (PCC & Hoʻomaluhia are closed Thursdays). Bring a headlamp/phone flashlight for walking down Koko Crater at dusk!',
+      summary: '7:30 AM car pickup on Kalākaua Ave, confirmed 10:00 AM Hanauma Bay snorkeling, Makapuʻu Lighthouse Trail, Koko Crater Stairs for sunset, and Thanksgiving dinner.',
+      holidayNote: 'Confirmed Bookings: Car pickup 7:30 AM (2570 Kalākaua Ave) & Hanauma Bay 10:00 AM (arrive by 9:45 AM w/ physical photo ID & $3 cash parking). Bring a headlamp/flashlight for Koko Crater at dusk!',
       stops: [
+        {
+          id: 'd3-car-pickup',
+          name: 'Pick Up Rental Car (2570 Kalākaua Ave)',
+          time: '7:30 AM',
+          category: 'transit',
+          lat: 21.2725,
+          lng: -157.8229,
+          duration: '20 min',
+          driveFromPrev: '2 min walk from Hotel Renew',
+          description: 'Pick up your rental car at 2570 Kalākaua Ave (valid through Mon 11/30 at 7:30 AM). Plenty of time afterward for coffee/breakfast before departing Waikiki around 9:10 AM for Hanauma Bay.',
+          reservationRequired: '✓ Booked · Thu 7:30 AM – Mon 7:30 AM',
+          tip: 'Bring driver’s license & credit card. Leave for Hanauma Bay by ~9:10–9:15 AM to park and be in line by 9:45 AM.'
+        },
         {
           id: 'd3-hanauma',
           name: 'Hanauma Bay Nature Preserve',
@@ -139,10 +152,10 @@ const TRIP_DATA = {
           lat: 21.2690,
           lng: -157.6938,
           duration: '2.5–3 hrs',
-          driveFromPrev: '25 min drive from Waikiki (9:30 AM depart)',
+          driveFromPrev: '25 min drive from Waikiki (depart ~9:10 AM)',
           description: 'Protected marine sanctuary inside a flooded volcanic crater teeming with tropical reef fish and sea turtles. Snorkel gear can be rented on-site.',
-          reservationRequired: 'Book Tue 11/24 at 7:00 AM HST ($25 · 10 AM slot)',
-          tip: 'Last entry is 1:30 PM. Bring $3 cash for parking and reef-safe sunscreen. If reservations sell out, stop at the lookout and head to Sandy Beach / Makapuʻu!'
+          reservationRequired: '✓ Booked · 10:00 AM slot',
+          tip: 'Be in line at the ticket window 15 min early (9:45 AM — no late entry!). Bring original physical photo ID, $3 cash for parking, and reef-safe mineral sunscreen.'
         },
         {
           id: 'd3-blowhole',
@@ -423,8 +436,21 @@ const TRIP_DATA = {
       color: '#4f6d7a',
       carInSplitMode: false,
       summary: 'Relaxed final Waikiki morning plus optional flex stops (Pearl Harbor or Catamaran Sail) if you’ve covered everything else before your afternoon flight WN2026.',
-      holidayNote: 'Leave Hotel Renew by 12:45–1:00 PM for WN2026 (~3:15–3:40 PM departure). Pearl Harbor and the Catamaran Sail are kept here as optional add-ons if you have extra time/energy.',
+      holidayNote: 'Return rental car by 7:30 AM at 2570 Kalākaua Ave (2-min walk from Hotel Renew). Leave Hotel Renew by 12:45–1:00 PM for WN2026 (~3:15–3:40 PM departure).',
       stops: [
+        {
+          id: 'd7-car-return',
+          name: 'Return Rental Car (2570 Kalākaua Ave)',
+          time: '7:30 AM',
+          category: 'transit',
+          lat: 21.2725,
+          lng: -157.8229,
+          duration: '15 min',
+          driveFromPrev: '2 min walk back to Hotel Renew',
+          description: 'Drop off the rental car at 2570 Kalākaua Ave by 7:30 AM (remember to refuel the evening before!), then walk 2 minutes back to Hotel Renew to relax or sleep in a bit before your Waikiki morning.',
+          reservationRequired: '✓ Return by 7:30 AM',
+          tip: 'Fill up gas Sunday evening on your way back from Ala Moana so Monday morning drop-off takes 5 minutes.'
+        },
         {
           id: 'd7-morning',
           name: 'Final Waikiki Swim & Kona Coffee',
@@ -715,9 +741,10 @@ const TRIP_DATA = {
       items: [
         {
           id: 'chk-hanauma',
-          title: 'Hanauma Bay Snorkeling Reservation (10:00 AM slot)',
-          detail: 'Opens strictly 2 days ahead at 7:00 AM HST (9:00 AM PST) on pros.hnl.info ($25/person). Sells out in ~5 minutes!',
-          when: 'Alarm: Tue 11/24 at 7:00 AM HST (9:00 AM PST) for Thu 11/26'
+          title: 'Hanauma Bay Snorkeling Reservation (Booked)',
+          detail: 'Thu 11/26 · 10:00 AM slot. Be in line by 9:45 AM with original physical photo ID, $3 cash for parking, and reef-safe sunscreen.',
+          when: '✓ Confirmed · Arrive by 9:45 AM',
+          defaultChecked: true
         },
         {
           id: 'chk-pearl',
